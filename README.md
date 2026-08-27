@@ -35,7 +35,7 @@ Sau 2-3 giờ, mỗi người sẽ:
 
 ```bash
 # 1. Clone repo (sau khi Tommy push lên GitHub)
-git clone https://github.com/thien-soy/github-workshop.git
+git clone https://github.com/SOY-Digital/github-workshop.git
 cd github-workshop
 
 # 2. Tạo branch riêng của bạn

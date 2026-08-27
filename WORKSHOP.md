@@ -51,7 +51,7 @@ Mentor chia sẻ màn hình, walk-through:
 
 ```bash
 # Clone về máy
-git clone https://github.com/thien-soy/github-workshop.git
+git clone https://github.com/SOY-Digital/github-workshop.git
 cd github-workshop
 
 # Xem trạng thái

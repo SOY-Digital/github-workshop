@@ -22,7 +22,7 @@ cd /Users/tommynguyen/Developer/work/SOY-SM-WORK/github-workshop
 # 6. Click "Create repository"
 
 # Sau khi tạo xong, chạy:
-git remote add origin https://github.com/thien-soy/github-workshop.git
+git remote add origin https://github.com/SOY-Digital/github-workshop.git
 git branch -M main
 git add .
 git commit -m "chore: initial workshop repo setup"
@@ -93,7 +93,7 @@ Apply label `good first issue` cho cả 4 để newbie biết bắt đầu từ 
 Self-test checklist:
 
 - [ ] Repo public/private đúng setting
-- [ ] Có thể clone về máy khác (`git clone https://github.com/thien-soy/github-workshop.git` trên máy khác để test)
+- [ ] Có thể clone về máy khác (`git clone https://github.com/SOY-Digital/github-workshop.git` trên máy khác để test)
 - [ ] 4 collaborators đã được invite và accept
 - [ ] `main` đã protected
 - [ ] 4 issue đã tạo và assignee đúng
