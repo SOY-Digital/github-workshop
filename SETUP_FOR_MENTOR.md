@@ -2,122 +2,118 @@
 
 > File này dành cho anh Tommy. Hoàn thành từng bước trước khi bắt đầu workshop.
 
----
+**Trạng thái hiện tại:**
 
-## Bước 1 — Push repo lên GitHub (5 phút)
-
-Repo local đã sẵn sàng ở `/Users/tommynguyen/Developer/work/SOY-SM-WORK/github-workshop`.
-
-### Cách A: Dùng GitHub web (khuyến nghị cho lần đầu)
-
-```bash
-cd /Users/tommynguyen/Developer/work/SOY-SM-WORK/github-workshop
-
-# Đã có git init ở local. Giờ tạo repo trên GitHub:
-# 1. Vào https://github.com/new
-# 2. Repository name: github-workshop
-# 3. Description: "ASW internal GitHub collaboration workshop"
-# 4. Visibility: Public (nếu muốn show portfolio) hoặc Private (nếu nội bộ)
-# 5. KHÔNG tick "Add README" / "Add .gitignore" (đã có sẵn local)
-# 6. Click "Create repository"
-
-# Sau khi tạo xong, chạy:
-git remote add origin https://github.com/SOY-Digital/github-workshop.git
-git branch -M main
-git add .
-git commit -m "chore: initial workshop repo setup"
-git push -u origin main
-```
-
-### Cách B: Dùng GitHub CLI (nếu đã cài `gh`)
-
-```bash
-cd /Users/tommynguyen/Developer/work/SOY-SM-WORK/github-workshop
-gh repo create github-workshop --public --source=. --remote=origin --push
-```
+- ✅ Repo đã live: **https://github.com/SOY-Digital/github-workshop** (org SOY-Digital)
+- ✅ Local repo: `/Users/tommynguyen/Developer/work/SOY-SM-WORK/github-workshop` (remote đã trỏ org)
+- ⬜ Các bước 1→4 bên dưới
 
 ---
 
-## Bước 2 — Add collaborators (3 phút)
+## Bước 1 — Thêm 4 thành viên vào repo (3 phút)
 
-Vào repo → **Settings → Collaborators → Add people**
+Repo thuộc org nên có 2 cách:
 
-Add 4 người:
+**Cách A — đơn giản (outside collaborators):**
+Repo → **Settings → Collaborators and teams → Add people** → add 4 người:
 - `liemsoy`
 - `ngocsoyasw`
 - `QuangSoyAgency`
 - `anhsoyagency`
 
-Role mặc định: **Write** (đủ quyền push branch + mở PR).
+Role: **Write** (đủ quyền push branch + mở PR).
+
+**Cách B — qua org Team (nếu muốn quản tập trung sau này):**
+Org SOY-Digital → **Teams → New team** (VD `workshop`) → add 4 bạn → vào repo Settings → Collaborators and teams → add team `workshop` với role **Write**.
+
+> ⚠️ Các bạn phải **check email (kể cả spam)** và Accept invite trước buổi học — tránh tốn 15 phút debug permission denied giữa buổi.
 
 ---
 
-## Bước 3 — Branch protection cho `main` (5 phút)
+## Bước 2 — Cấu hình merge & branch protection (5 phút)
 
-Vào **Settings → Branches → Add branch protection rule**:
+### 2a. Merge settings
 
-| Setting                        | Value                              |
-|--------------------------------|------------------------------------|
-| Branch name pattern            | `main`                             |
-| Require a pull request before merging | ✅ ON                          |
-| Require approvals              | ✅ ON, minimum **1 approval**      |
+Repo → **Settings → General → Pull Requests** section:
+
+| Setting | Value |
+|---|---|
+| Allow merge commits | ❌ OFF |
+| Allow squash merging | ✅ ON (chọn "Commit title + commit message" để tự gom từ commit messages) |
+| Allow rebase merging | ❌ OFF |
+| **Automatically delete head branches** | ✅ ON |
+
+→ WORKSHOP.md Phần 5.3 hướng dẫn học viên bấm **"Squash and merge"** — settings này đảm bảo nút đó là lựa chọn duy nhất, và branch tự xoá sau merge.
+
+### 2b. Branch protection cho `main`
+
+**Settings → Branches → Add branch protection rule**:
+
+| Setting | Value |
+|---|---|
+| Branch name pattern | `main` |
+| Require a pull request before merging | ✅ ON |
+| Require approvals | ✅ ON, minimum **1 approval** |
 | Dismiss stale pull request approvals when new commits are pushed | ✅ ON |
-| Require review from Code Owners | ❌ OFF (chưa cần)                 |
-| Require status checks to pass before merging | ❌ OFF (no CI chưa)  |
-| Require conversation resolution before merging | ✅ ON (optional, recommended) |
-| Include administrators          | ❌ OFF (anh vẫn push được nếu cần) |
-| Allow force pushes             | ❌ OFF                              |
-| Allow deletions                | ❌ OFF                              |
-
-Click **Create** → giờ `main` đã protected, ai cũng phải qua PR + review.
+| Require conversation resolution before merging | ✅ ON |
+| Include administrators | ❌ OFF (anh vẫn fix trực tiếp được khi cần gấp) |
+| Allow force pushes / deletions | ❌ OFF |
 
 ---
 
-## Bước 4 — Tạo 4 issue mẫu cho team (5 phút)
+## Bước 3 — Tạo 4 issue mẫu (5 phút)
 
-Vào **Issues → New issue** → chọn template:
+**Issues → New issue → Feature Request** template:
 
-| # | Title                                         | Template        | Assignee         |
-|---|-----------------------------------------------|-----------------|------------------|
-| 1 | `[FEAT] Add intro page for liemsoy`            | Feature Request | `liemsoy`        |
-| 2 | `[FEAT] Add intro page for ngocsoyasw`          | Feature Request | `ngocsoyasw`     |
-| 3 | `[FEAT] Add intro page for QuangSoyAgency`      | Feature Request | `QuangSoyAgency` |
-| 4 | `[FEAT] Add intro page for anhsoyagency`        | Feature Request | `anhsoyagency`   |
+| Title | Assignee |
+|---|---|
+| `[FEAT] Add intro page for liemsoy` | `liemsoy` |
+| `[FEAT] Add intro page for ngocsoyasw` | `ngocsoyasw` |
+| `[FEAT] Add intro page for QuangSoyAgency` | `QuangSoyAgency` |
+| `[FEAT] Add intro page for anhsoyagency` | `anhsoyagency` |
 
-Apply label `good first issue` cho cả 4 để newbie biết bắt đầu từ đâu.
-
----
-
-## Bước 5 — Verify trước buổi học (5 phút)
-
-Self-test checklist:
-
-- [ ] Repo public/private đúng setting
-- [ ] Có thể clone về máy khác (`git clone https://github.com/SOY-Digital/github-workshop.git` trên máy khác để test)
-- [ ] 4 collaborators đã được invite và accept
-- [ ] `main` đã protected
-- [ ] 4 issue đã tạo và assignee đúng
-- [ ] Tạo 1 PR test → verify template load đúng → close PR test (không merge)
+Apply label `good first issue` cho cả 4.
 
 ---
 
-## Bước 6 — Trong buổi workshop (theo WORKSHOP.md)
+## Bước 4 — Verify trước buổi học (5 phút)
 
-Mở file `WORKSHOP.md` và follow từng phần. File đã chia sẵn 7 phần + thời lượng.
+- [ ] 4 thành viên đã Accept invite (check danh sách trong Settings → Collaborators)
+- [ ] Merge settings + auto-delete đã bật (Bước 2a)
+- [ ] `main` đã protected (Bước 2b)
+- [ ] 4 issue đã tạo, assignee đúng, label `good first issue`
+- [ ] Tạo 1 PR test từ branch bất kỳ → verify: PR template load đúng, chỉ thấy nút "Squash and merge" → close PR test, xoá branch test
+- [ ] Test clone: `git clone https://github.com/SOY-Digital/github-workshop.git` chạy được trên máy khác
+
+---
+
+## Bước 5 — Trong buổi workshop
+
+Mở `WORKSHOP.md` và follow 7 phần theo thời lượng.
+
+**Mentor notes theo từng phần:**
+
+| Phần | Lưu ý cho anh |
+|---|---|
+| Phần 3 (branch & commit) | Dành 2 phút check `git config user.email` của từng bạn — email sai là commit mất avatar, lỗi kinh điển của người mới |
+| Phần 5 (review & merge) | Ghép chéo review: A review B, B review C... tránh người mở PR tự merge (branch protection sẽ chặn) |
+| Phần 6 (conflict drill) | **Quan trọng:** merge PR người A trước, sau đó cả team nhìn màn hình người B thấy conflict xuất hiện — file drill `exercises/conflict-target.md` thiết kế cả 2 cùng sửa dòng 3 nên chắc chắn conflict |
+| Phần 7 (issues) | Nhắc học viên dùng `Closes #X` trong PR bài tập 2 |
 
 ---
 
 ## 📞 Troubleshooting nhanh cho mentor
 
-| Vấn đề                                       | Giải pháp                                                                 |
-|----------------------------------------------|---------------------------------------------------------------------------|
-| Học viên k thấy repo                        | Chưa accept invite → check email (kể cả spam)                            |
-| `git push` báo auth fail                    | Hướng dẫn dùng Personal Access Token (xem WORKSHOP.md phần Troubleshooting) |
-| `main` bị lock, không push được             | Đúng rồi → đó là branch protection hoạt động → phải qua PR               |
-| Conflict không ai biết resolve              | Pair-work với mentor 5 phút, dùng VSCode merge editor                    |
-| Học viên commit sai author                  | `git commit --amend --author="..."` rồi `git push --force`                |
+| Vấn đề | Giải pháp |
+|---|---|
+| Học viên không thấy repo | Chưa accept invite → check email (kể cả spam) |
+| `git push` báo auth fail | Hướng dẫn dùng Personal Access Token (WORKSHOP.md → Xử lý lỗi thường gặp) |
+| Commit không có avatar | `user.email` không khớp email GitHub → xem WORKSHOP.md phần chuẩn bị |
+| `main` bị lock, anh push không được | Đó là branch protection — nếu thật cần gấp: PR như thường, hoặc tắt rule "Include administrators" đã để OFF thì admin vẫn push được trực tiếp |
+| Conflict drill không nổ conflict | Kiểm tra cả 2 có thực sự sửa cùng dòng 3 trong `exercises/conflict-target.md` (không phải dòng khác) |
+| Học viên commit sai author | `git commit --amend --author="Tên <email-đúng>"` rồi `git push --force-with-lease` |
 
 ---
 
-**Estimated total setup time:** ~25 phút
+**Estimated total setup time:** ~20 phút
 **Workshop duration:** ~2.5 giờ

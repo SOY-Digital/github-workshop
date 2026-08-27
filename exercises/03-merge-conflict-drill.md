@@ -4,23 +4,24 @@
 
 ## Setup
 
-Mentor tạo sẵn file `exercises/conflict-target.md` với nội dung:
+File drill đã có sẵn trong repo: [`exercises/conflict-target.md`](./conflict-target.md). Cả 2 người trong pair **cùng sửa dòng số 3** (cùng 1 dòng → đảm bảo 100% conflict):
 
 ```markdown
 # Workshop Rules
 
 1. Commit message phải theo Conventional Commits
 2. Mỗi PR cần ít nhất 1 reviewer
-3. <TODO: câu rule thứ 3 — người A sẽ điền>
-4. <TODO: câu rule thứ 4 — người B sẽ điền>
+3. <VIẾT RULE CỦA BẠN VÀO DÒNG NÀY>   ← dòng 3, người A và người B CÙNG sửa dòng này
 ```
+
+> Mỗi người tự nghĩ 1 rule riêng (VD: "3. Code xong phải tự test trước khi mở PR"). Hai nội dung khác nhau trên cùng 1 dòng = git không tự gộp được = conflict thật.
 
 ## Pair assignment
 
-| Cặp       | Người A sửa line 3        | Người B sửa line 4        |
-|-----------|---------------------------|---------------------------|
-| Pair 1    | Liem Bui (`liemsoy`)     | Ngoc Le (`ngocsoyasw`)    |
-| Pair 2    | Quang Hoang (`QuangSoyAgency`) | Anh Le (`anhsoyagency`) |
+| Cặp       | Người A                            | Người B                            |
+|-----------|------------------------------------|------------------------------------|
+| Pair 1    | Liem Bui (`liemsoy`) — rule của A | Ngoc Le (`ngocsoyasw`) — rule của B |
+| Pair 2    | Quang Hoang (`QuangSoyAgency`) — rule của A | Anh Le (`anhsoyagency`) — rule của B |
 
 ## Flow
 
@@ -29,14 +30,24 @@ Mentor tạo sẵn file `exercises/conflict-target.md` với nội dung:
 git checkout main && git pull
 
 # Người A
-git checkout -b docs/pair1-rule3-liem
-# Sửa line 3 trong conflict-target.md → commit → push → mở PR (CHƯA merge)
+git checkout -b docs/pair1-liem-rule
+# SỬA DÒNG 3 trong exercises/conflict-target.md (thay TODO bằng rule của mình)
+git add exercises/conflict-target.md
+git commit -m "docs: add pair1 rule by liem"
+git push -u origin docs/pair1-liem-rule
+# Mở PR trên GitHub → CHƯA merge, chờ mentor bật đèn xanh
 
-# Người B (làm song song)
-git checkout -b docs/pair1-rule4-ngoc
-# Sửa line 4 trong conflict-target.md → commit → push → mở PR (CHƯA merge)
+# Người B (làm song song với A, không đợi)
+git checkout -b docs/pair1-ngoc-rule
+# SỬA DÒNG 3 (cùng dòng với A) — thay TODO bằng rule KHÁC của mình
+git add exercises/conflict-target.md
+git commit -m "docs: add pair1 rule by ngoc"
+git push -u origin docs/pair1-ngoc-rule
+# Mở PR → CHƯA merge
 
-# Ai mở PR sau sẽ gặp conflict khi merge → đây là phần drill
+# Mentor merge PR của người A trước
+# → PR của người B ngay lập tức hiện "This branch has conflicts that must be resolved"
+# → Đây là phần drill chính
 ```
 
 ## Khi gặp conflict

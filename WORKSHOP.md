@@ -14,9 +14,9 @@ Mỗi học viên cần:
 # 1. Cài git (nếu chưa có)
 # macOS: xcode-select --install  |  Windows: tải git-scm.com  |  Linux: apt install git
 
-# 2. Cấu hình git user (BẮT BUỘC — phải trùng GitHub username)
-git config --global user.name "liemsoy"          # ← thay bằng GitHub user của bạn
-git config --global user.email "liem@example.com" # ← email dùng cho GitHub
+# 2. Cấu hình git user (BẮT BUỘC)
+git config --global user.name "Liem Bui"       # ← tên hiển thị của bạn (tên thật, tự do)
+git config --global user.email "liem@asw.global" # ← email PHẢI trùng email tài khoản GitHub của bạn
 
 # 3. Verify
 git config --global user.name
@@ -24,9 +24,13 @@ git config --global user.email
 git --version
 ```
 
-**Quan trọng:** `user.name` phải là GitHub handle (ví dụ `liemsoy`), không phải tên thật. Đây là cách team nhận biết ai làm gì trong lịch sử commit.
+**⚠️ Quan trọng — cách GitHub nhận biết commit là của AI:**
+- GitHub map commit với tài khoản của bạn qua **`user.email`**, KHÔNG phải `user.name`.
+- Nếu email sai → commit vẫn push được nhưng **không có avatar, không được tính vào contributions** của bạn.
+- Xem email tài khoản GitHub của bạn tại: `github.com` → Settings → **Emails** (đăng nhập bằng account của bạn).
+- Nếu không muốn lộ email thật: bật "Keep my email addresses private" rồi dùng email dạng `12345678+liemsoy@users.noreply.github.com` (GitHub hiện sẵn email này trong trang Emails).
 
-**Verify trên GitHub:** Đảm bảo bạn đã được Tommy add làm **Collaborator** vào repo (Settings → Collaborators).
+**Verify quyền truy cập:** Đảm bảo bạn đã nhận invite vào org **SOY-Digital** từ Tommy (check email, kể cả spam) và đã Accept.
 
 ---
 
@@ -60,9 +64,9 @@ git branch -a
 git log --oneline -10
 
 # Mở README.md bằng editor yêu thích (VSCode, Sublime, vim...)
-code .          # VSCode
+code .           # VSCode
 # hoặc
-open README.md   # macOS default editor
+open README.md   # macOS — Windows dùng: start README.md
 ```
 
 **Bài tập nhỏ (5 phút):** Trả lời trong đầu:
@@ -85,7 +89,8 @@ git pull origin main
 git checkout -b feat/liemsoy-intro
 
 # 3. Copy file mẫu và sửa
-cp team-pages/_template.md team-pages/liemsoy.md
+cp team-pages/_template.md team-pages/liemsoy.md        # macOS/Linux
+# Windows PowerShell: Copy-Item team-pages/_template.md team-pages/liemsoy.md
 
 # Mở file vừa tạo bằng editor, điền:
 # - Tên, role, GitHub user
@@ -103,7 +108,7 @@ git commit -m "feat: add intro page for liemsoy"
 git push -u origin feat/liemsoy-intro
 ```
 
-**⚠️ Nếu gặp lỗi authentication:** xem mục [Xử lý lỗi thường gặp](#-xử-lý-lỗi-thường-gặp) ở cuối file.
+**⚠️ Nếu gặp lỗi authentication:** xem mục [Xử lý lỗi thường gặp](#xử-lý-lỗi-thường-gặp) ở cuối file.
 
 ---
 
@@ -150,9 +155,8 @@ Khi có comment → author:
 ### 5.3 — Merge
 
 Khi PR có ≥ 1 approval:
-- Click **"Merge pull request"** → **"Confirm merge"**
-- Squash merge (mặc định) gom commit thành 1 → history gọn
-- **Quan trọng:** GitHub tự động xóa branch sau merge. Local thì tự dọn:
+- Click **"Squash and merge"** (repo này cấu hình squash làm mặc định — gom mọi commit trên branch thành 1 commit gọn trong `main`)
+- **Quan trọng:** Repo đã bật tự động xóa branch sau merge. Nếu vẫn thấy branch, click nút **"Delete branch"**. Local thì tự dọn:
 
 ```bash
 git checkout main
@@ -220,7 +224,7 @@ Checklist mỗi người tự check:
 
 ---
 
-## 🆘 Xử lý lỗi thường gặp
+## Xử lý lỗi thường gặp
 
 ### `git push` báo `Permission denied`
 

@@ -39,14 +39,14 @@ git clone https://github.com/SOY-Digital/github-workshop.git
 cd github-workshop
 
 # 2. Tạo branch riêng của bạn
-git checkout -b feat/<ten-cua-ban>-intro
+git checkout -b feat/<github-user>-intro   # VD: feat/liemsoy-intro
 
 # 3. Sửa file team-pages/<github-user>.md (xem phần Bài tập bên dưới)
 
 # 4. Commit & push
 git add .
-git commit -m "feat: add intro page for <ten-cua-ban>"
-git push -u origin feat/<ten-cua-ban>-intro
+git commit -m "feat: add intro page for <github-user>"   # VD: feat: add intro page for liemsoy
+git push -u origin feat/<github-user>-intro
 
 # 5. Mở Pull Request trên GitHub → chờ review → merge
 ```
