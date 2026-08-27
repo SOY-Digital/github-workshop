@@ -1,27 +1,23 @@
 ---
-name: ✨ Feature Request
-about: Đề xuất tính năng / nội dung mới cho workshop
+name: Đề xuất
+about: Đề xuất nội dung mới hoặc cải thiện repo
 title: "[FEAT] "
 labels: enhancement
 assignees: ''
 ---
 
-## Vấn đề cần giải quyết
+## Vấn đề muốn giải quyết
 
-<!-- Tính năng này giải quyết vấn đề gì? -->
+<!-- Tính năng này giải quyết điều gì -->
 
-## Đề xuất giải pháp
+## Đề xuất của bạn
 
-<!-- Mô tả ngắn gọn cách giải quyết -->
+<!-- Mô tả giải pháp -->
 
-## Alternative đã xem xét
+## Đã nghĩ phương án nào khác chưa
 
-<!-- Đã xem xét cách nào khác chưa? Tại sao chọn cách này? -->
+<!-- Và vì sao chọn cách này -->
 
-## Use case / Context
+## Ngữ cảnh
 
-<!-- Ai sẽ dùng? Khi nào dùng? -->
-
-## Ước lượng effort
-
-<!-- S/M/L (Small/Medium/Large) -->
+<!-- Ai dùng, khi nào dùng -->

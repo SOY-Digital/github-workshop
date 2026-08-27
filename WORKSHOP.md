@@ -1,302 +1,245 @@
-# 📚 SELF-STUDY — Làm quen GitHub Workflow
+# Tự học GitHub workflow
 
-> Lộ trình **tự học ở nhà** — mỗi bạn tự làm theo tài liệu này theo tốc độ riêng. Không cần chờ ai, không cần hẹn giờ. Tommy review PR khi có thời gian (thường trong ngày làm việc).
->
-> **Cách dùng:** làm tuần tự từ trên xuống. Mỗi phần có mục "✅ Xong khi" — chỉ sang phần sau khi self-check pass. Bị kẹt bất kỳ lúc nào → mở issue label `question` (xem Phần 7) hoặc nhắn Tommy.
+Tài liệu này dành cho các bạn lần đầu làm việc trên GitHub theo nhóm. Làm tuần tự từ Phần 0. Mỗi phần có mục "xong khi nào" để tự kiểm tra trước khi chuyển tiếp. Không ai giục — nhanh chậm tùy bạn — nhưng đừng bỏ phần nào.
 
-**Thời lượng tham khảo:** ~2.5-3 giờ liền mạch, hoặc chia nhiều buổi nhỏ — mỗi phần dừng được, không mất tiến độ.
+Nếu làm liền mạch thì hết khoảng 2.5 đến 3 tiếng. Chia nhiều buổi cũng được.
 
----
+Bị kẹt thì mở issue label `question` (Phần 7 dạy cách hỏi cho hiệu quả), hoặc nhắn Thiện qua Slack nếu gấp. Không có câu hỏi ngốc, chỉ có câu hỏi thiếu thông tin.
 
-## 📋 Phần 0 — Chuẩn bị (15 phút)
+## Phần 0 — Chuẩn bị (15 phút)
+
+Cài git nếu chưa có: macOS chạy `xcode-select --install`, Windows tải ở git-scm.com, Linux `apt install git`.
+
+Rồi cấu hình danh tính:
 
 ```bash
-# 1. Cài git (nếu chưa có)
-# macOS: xcode-select --install  |  Windows: tải git-scm.com  |  Linux: apt install git
+git config --global user.name "Liem Bui"          # tên hiển thị của bạn
+git config --global user.email "liem@asw.global"  # email tài khoản GitHub của bạn
+```
 
-# 2. Cấu hình git user (BẮT BUỘC)
-git config --global user.name "Liem Bui"       # ← tên hiển thị của bạn (tên thật, tự do)
-git config --global user.email "liem@asw.global" # ← email PHẢI trùng email tài khoản GitHub của bạn
+Phần `user.name` là tên hiển thị, ghi gì cũng được. Phần `user.email` thì phải khớp với email của tài khoản GitHub bạn — đăng nhập github.com, vào Settings, Emails để xem.
 
-# 3. Verify
+Vì sao email lại quan trọng đến vậy: GitHub nhận diện commit thuộc về ai qua email, không phải qua tên. Email sai thì commit vẫn push lên được bình thường, nhưng nó không có avatar của bạn và không được tính vào contributions. Đây là lỗi người mới mắc nhiều nhất, và nó âm thầm đến mức có người vài tuần sau mới phát hiện.
+
+Không muốn lộ email thật? Bật "Keep my email addresses private" trong Settings, Emails rồi dùng địa chỉ dạng `12345678+liemsoy@users.noreply.github.com` — GitHub hiện sẵn trong trang đó, copy được.
+
+Kiểm tra lại đã cấu hình đúng chưa:
+
+```bash
 git config --global user.name
 git config --global user.email
 git --version
 ```
 
-**⚠️ Quan trọng — cách GitHub nhận biết commit là của AI:**
-- GitHub map commit với tài khoản của bạn qua **`user.email`**, KHÔNG phải `user.name`.
-- Nếu email sai → commit vẫn push được nhưng **không có avatar, không được tính vào contributions** của bạn.
-- Xem email tài khoản GitHub của bạn tại: `github.com` → Settings → **Emails** (đăng nhập bằng account của bạn).
-- Nếu không muốn lộ email thật: bật "Keep my email addresses private" rồi dùng email dạng `12345678+liemsoy@users.noreply.github.com` (GitHub hiện sẵn email này trong trang Emails).
+Cuối cùng, chắc chắn bạn đã nhận mail mời vào tổ chức SOY-Digital và bấm Accept (nhớ kiểm tra cả mục spam). Chưa thấy mail thì nhắn Thiện gửi lại.
 
-**Verify quyền truy cập:** Đảm bảo bạn đã nhận invite vào org **SOY-Digital** từ Tommy (check email, kể cả spam) và đã Accept. Chưa nhận → nhắn Tommy gửi lại.
+Xong khi nào: `git --version` chạy được, email khớp GitHub, invite đã accept.
 
-**✅ Xong khi:** `git --version` chạy được, `user.email` khớp email GitHub, đã Accept invite org.
+## Phần 1 — Làm quen màn hình GitHub (10 phút)
 
----
+Mở repo trên trình duyệt và bấm lần lượt qua các tab:
 
-## Phần 1 — Làm quen GitHub UI (10 phút)
-
-Tự khám phá repo **https://github.com/SOY-Digital/github-workshop** trên trình duyệt:
-
-| Vùng trên GitHub | Dùng để làm gì |
+| Tab | Dùng để làm gì |
 |---|---|
-| **Code** tab | Xem file, browse source |
-| **Issues** tab | Đặt câu hỏi, báo bug, đề xuất tính năng |
-| **Pull requests** tab | Review code trước khi merge |
-| **Actions** tab | CI/CD (sẽ dùng ở mức nâng cao) |
-| **Settings** tab | Phân quyền, branch protection (chỉ owner thấy) |
-| **Insights → Contributors** | Xem ai đóng góp bao nhiêu |
+| Code | xem file, đọc source |
+| Issues | đặt câu hỏi, báo lỗi, đề xuất |
+| Pull requests | xem và review thay đổi trước khi merge |
+| Actions | CI/CD — khóa này chưa dùng đến |
+| Settings | phân quyền, bảo vệ branch (chỉ người quản lý thấy) |
+| Insights, Contributors | ai đóng góp bao nhiêu |
 
-**Gợi ý tự học:** Mở 1 PR thật của dự án nổi tiếng (ví dụ `facebook/react`) → xem tab "Files changed" → "Commits" → "Reviews" — quan sát người ta mô tả PR và review nhau kiểu gì.
+Sau đó mở một dự án lớn bất kỳ — `facebook/react` chẳng hạn — vào tab Pull requests, chọn một PR và nhìn ba chỗ: Conversation, Commits, Files changed khác nhau ra sao. Chưa hiểu hết cũng không sao, để mắt vào là được.
 
-**✅ Xong khi:** Phân biệt được Issues với Pull Requests, biết tab nào để xem diff của PR.
+Xong khi nào: phân biệt được Issues với Pull requests, và biết chỗ nào để xem diff của một PR.
 
----
-
-## Phần 2 — Clone & khám phá repo (10 phút)
+## Phần 2 — Clone repo về máy (10 phút)
 
 ```bash
-# Clone về máy
 git clone https://github.com/SOY-Digital/github-workshop.git
 cd github-workshop
 
-# Xem trạng thái
 git status
 git branch -a
 git log --oneline -10
 
-# Mở README.md bằng editor yêu thích (VSCode, Sublime, vim...)
-code .           # VSCode
-# hoặc
-open README.md   # macOS — Windows dùng: start README.md
+# mở repo bằng editor bạn thích
+code .            # VSCode
+open README.md    # macOS; Windows dùng: start README.md
 ```
 
-**Bài tập nhỏ (5 phút):** Trả lời trong đầu:
-1. Branch mặc định là gì?
-2. Có bao nhiêu file `.md` trong repo?
-3. Commit gần nhất là gì?
+Bài tự kiểm tra, trả lời không nhìn lại:
+
+1. Branch mặc định của repo là gì?
+2. Repo có bao nhiêu file `.md`?
+3. Commit mới nhất nói gì?
 
 <details>
-<summary>Đáp án (click mở)</summary>
+<summary>Đáp án</summary>
 
-1. `main` (đây là branch protected)
-2. Đếm trong tab Code trên GitHub hoặc `find . -name "*.md" -not -path "./.git/*" | wc -l`
-3. `git log --oneline -1` — hiện SHA ngắn + commit message
+1. `main` — và nó đang được bảo vệ.
+2. Đếm bằng `find . -name "*.md" -not -path "./.git/*" | wc -l`, hoặc mở tab Code trên GitHub.
+3. `git log --oneline -1` hiện SHA ngắn kèm message.
 
 </details>
 
-**✅ Xong khi:** Trả lời được 3 câu trên mà không cần đoán.
+Xong khi nào: trả lời được cả ba câu mà không phải đoán.
 
----
+## Phần 3 — Branch và commit đầu tiên (20 phút)
 
-## Phần 3 — Tạo branch & commit đầu tiên (20 phút)
-
-> Đây là nội dung của **[Bài tập 1](./exercises/01-personal-intro.md)** — làm theo file đó, quay lại đây khi xong.
-
-Mục tiêu: tạo file `team-pages/<github-user>.md` trên branch riêng và push lên GitHub.
+Phần này chính là [bài tập 1](./exercises/01-personal-intro.md). Mục tiêu: tạo file `team-pages/<github-user>.md` trên branch riêng rồi push lên.
 
 ```bash
-# 1. Đảm bảo đang ở main và sync mới nhất
+# 1. về main và lấy mới nhất
 git checkout main
 git pull origin main
 
-# 2. Tạo branch riêng (đặt tên theo GitHub user)
+# 2. branch riêng, đặt tên theo github user của bạn
 git checkout -b feat/liemsoy-intro
 
-# 3. Copy file mẫu và sửa
+# 3. copy template và sửa nội dung
 cp team-pages/_template.md team-pages/liemsoy.md        # macOS/Linux
 # Windows PowerShell: Copy-Item team-pages/_template.md team-pages/liemsoy.md
 
-# Mở file vừa tạo bằng editor, điền:
-# - Tên, role, GitHub user
-# - 1 dòng giới thiệu bản thân
-# - 1 thứ bạn muốn học ở workshop
+# trong file, điền: tên, role, github user,
+# một dòng giới thiệu, một thứ muốn học được sau khóa này
 
-# 4. Xem thay đổi
+# 4. xem lại mình vừa sửa gì
 git diff
 
-# 5. Stage & commit
+# 5. stage và commit
 git add team-pages/liemsoy.md
 git commit -m "feat: add intro page for liemsoy"
 
-# 6. Push branch lên GitHub
+# 6. push branch lên GitHub
 git push -u origin feat/liemsoy-intro
 ```
 
-**⚠️ Nếu gặp lỗi authentication:** xem mục [Xử lý lỗi thường gặp](#xử-lý-lỗi-thường-gặp) ở cuối file.
+Gặp lỗi authentication thì xuống mục [Xử lý lỗi thường gặp](#xử-lý-lỗi-thường-gặp) cuối file.
 
-**✅ Xong khi:** Branch của bạn xuất hiện trên GitHub (tab Code → dropdown branch), commit có avatar GitHub của bạn.
+Xong khi nào: branch của bạn hiện trên GitHub (tab Code, dropdown branch), và commit có avatar của bạn. Commit mà không có avatar nghĩa là email sai — quay lại Phần 0 đọc lại phần email.
 
----
+## Phần 4 — Mở pull request (15 phút)
 
-## Phần 4 — Mở Pull Request (15 phút)
+Push xong, vào repo trên GitHub sẽ thấy banner vàng với nút **Compare & pull request**. Bấm vào.
 
-Sau khi push thành công, vào repo trên GitHub — sẽ hiện banner vàng với nút **"Compare & pull request"**.
+- Title: giữ nguyên commit message, ví dụ `feat: add intro page for liemsoy`.
+- Description: template tự load sẵn, điền cho đủ. Mục How to test ghi đại loại `git checkout feat/liemsoy-intro && cat team-pages/liemsoy.md`.
+- Reviewers bên phải: chọn một bạn khác trong team.
+- Labels: `documentation`.
 
-1. Click nút đó
-2. **Title:** `feat: add intro page for liemsoy` (copy từ commit message)
-3. **Description:** GitHub tự động load template — fill các mục:
-   - **Summary:** 1-2 dòng mô tả thay đổi
-   - **Changes:** list file đã sửa
-   - **How to test:** `git checkout feat/liemsoy-intro && cat team-pages/liemsoy.md`
-4. Bên phải:
-   - **Reviewers:** add **một bạn khác trong team** (đừng chọn mình, đừng chọn Tommy làm reviewer đầu tiên)
-   - **Labels:** `documentation`
-5. Click **Create pull request**
+Bấm Create pull request. PR lúc này đang chờ review — đó là trạng thái bình thường, không phải lỗi.
 
-**✅ Xong khi:** PR mở thành công, hiện "Awaiting review from ..." và template đã fill.
+Xong khi nào: PR mở thành công, hiện "Awaiting review", template đã điền đủ.
 
----
+## Phần 5 — Review PR cho người khác (15 phút)
 
-## Phần 5 — Review PR cho bạn khác (15 phút)
+Nguyên tắc của repo này: mở một PR thì review một PR của bạn khác. Bốn người mà ai cũng giữ nguyên tắc này thì không PR nào phải nằm chờ.
 
-> Luật self-study: **mở 1 PR thì phải review 1 PR của bạn khác** — đây là vòng tuần hoàn của teamwork. Có 4 bạn → mỗi PR sẽ luôn có người review mà không cần chờ Tommy.
+Vào PR mà bạn được thêm làm reviewer, mở tab **Files changed**:
 
-Trong PR mà bạn được add reviewer (tab **"Files changed"**):
+- Đọc từng dòng thay đổi. Có gì muốn nói thì hover vào dòng, bấm dấu **+** để comment.
+- Chốt bằng nút **Review changes** góc phải, ba lựa chọn: **Comment** (góp ý, không chặn), **Approve** (đồng ý merge), **Request changes** (phải sửa trước khi merge).
 
-1. Đọc từng dòng thay đổi
-2. Hover vào dòng bất kỳ → click **"+"** để comment
-3. Chốt bằng 1 trong 3 kiểu review (nút **"Review changes"** góc phải):
-   - **Comment:** góp ý, không chặn merge
-   - **Approve:** OK, cho merge
-   - **Request changes:** phải sửa trước khi merge
+Comment hữu ích trông như thế nào: "Mục X hay, nhưng tên file nên là...", "Link này 404 nè", "Ý bạn ở đây là...?". Comment chỉ gõ "ok" thì người viết chẳng biết sửa gì.
 
-**Gợi ý comment hữu ích cho người mới:** "Section X hay, nhưng tên file nên là...", "Đây có phải ý bạn là...?", "Link này bị 404 nè". Tránh chỉ gõ "ok" / "+1" — không có thông tin.
+Khi chính PR của bạn được review:
 
-### Khi chính PR của bạn được review
-
-- Có comment → trả lời trong thread; nếu cần sửa → push commit mới lên **cùng branch** (PR tự cập nhật)
-- Có "Request changes" → sửa xong push, rồi click **"Re-request review"** để người review check lại
-- Có ≥ 1 approval → tự bấm **"Squash and merge"** (repo cấu hình squash + auto-delete branch) — không cần chờ ai cho phép
+- Có comment thì trả lời trong thread. Cần sửa thì push commit mới lên cùng branch, PR tự cập nhật.
+- Bị Request changes thì sửa xong push lên, rồi bấm **Re-request review** để người review xem lại.
+- Đủ approval thì tự bấm **Squash and merge**. Repo cấu hình chỉ cho squash và tự xóa branch sau merge, không cần chờ ai cho phép.
 
 ```bash
-# Sau khi merge, dọn local:
+# sau khi merge, dọn máy
 git checkout main
 git pull origin main
 git branch -d feat/liemsoy-intro
 ```
 
-**✅ Xong khi:** Bạn đã approve hoặc comment ít nhất 1 PR của bạn khác, và PR của bạn đã được merge (bởi bạn sau khi có approval).
+Xong khi nào: bạn đã review (comment hoặc approve) ít nhất một PR của bạn khác, và PR của bạn đã được merge.
 
----
+## Phần 6 — Merge conflict (20 phút)
 
-## Phần 6 — Xử lý Merge Conflict (20 phút — bài khó nhất)
+Đây là phần khiến người mới sợ git nhất, nên nó có hẳn một bài tập riêng: [bài tập 3](./exercises/03-merge-conflict-drill.md). Bạn sẽ tự tạo một conflict thật trên máy mình, đọc hiểu các marker, rồi tự gỡ. Làm một mình, không cần ai phối hợp.
 
-> Đây là nội dung của **[Bài tập 3](./exercises/03-merge-conflict-drill.md)** — drill solo 100% local, tự tạo conflict thật rồi tự resolve. Làm theo file đó.
+Xong khi nào: hoàn thành checklist cuối bài tập 3.
 
-Nội dung chính bạn sẽ học:
-- Cách tạo tình huống 2 branch cùng sửa 1 dòng
-- Đọc 3 markers `<<<<<<<`, `=======`, `>>>>>>>`
-- Quyết định giữ gì và gộp 2 phía
+## Phần 7 — Issue: kênh hỏi khi bị kẹt (10 phút)
 
-**✅ Xong khi:** Hoàn thành checklist trong Bài tập 3.
+Tự học thì issue là kênh hỏi chính của repo này:
 
----
+1. Tab Issues, New issue, chọn template Question.
+2. Kể rõ: đang làm bước nào, chạy lệnh gì, kết quả mong đợi là gì, thực tế ra sao. Paste đầy đủ error message.
+3. Tiêu đề đi thẳng vào vấn đề: `[QUESTION] git push báo Permission denied dù đã accept invite`.
 
-## Phần 7 — Issues: cách hỏi khi bị kẹt (10 phút)
+Cách hỏi tốt thì người trả lời đỡ mệt và bạn có câu trả lời nhanh hơn. Ba thói quen: paste full error thay vì chụp màn hình cropped, nêu command đã chạy, nêu những gì đã thử. Áp dụng luôn cho Slack.
 
-Tự học không có nghĩa học một mình — **issue là kênh hỏi chính** của repo này:
+Issue còn dùng để đề xuất. Xong lộ trình rồi thì mở một issue đề xuất cải thiện repo — thêm bài tập, đổi format, gì cũng được. Đây cũng là lần đầu bạn viết issue có tính xây dựng.
 
-1. Tab **Issues → New issue** → chọn template **Question**
-2. Mô tả: bạn đang làm bước nào, chạy lệnh gì, thấy lỗi gì (paste đầy đủ error message)
-3. Điền tiêu đề rõ: `[QUESTION] git push báo Permission denied dù đã accept invite`
+Trong PR description, thêm `Closes #5` (số issue tương ứng) thì issue tự đóng khi PR được merge.
 
-Mẹo hỏi hiệu quả (áp dụng luôn cho Slack):
-- Paste **full error message**, đừng chụp màn hình cropped
-- Nêu command đã chạy + kết quả mong đợi vs kết quả thực tế
-- Nêu những gì đã thử
+Xong khi nào: đã mở ít nhất một issue, và biết dùng `Closes #X`.
 
-**Bonus tự học:** Mỗi bạn sau khi xong lộ trình, mở 1 issue Feature Request đề xuất cải thiện repo (thêm bài tập, đổi format...) — đây cũng là cách luyện viết issue.
+## Checklist tốt nghiệp
 
-**Reference issue trong PR:** thêm `Closes #5` vào PR description → issue tự đóng khi PR merge.
+Tự tick, đủ là xong:
 
-**✅ Xong khi:** Đã mở ít nhất 1 issue (question hoặc feature request).
+- [ ] email git khớp GitHub (commit có avatar)
+- [ ] clone repo thành công
+- [ ] tạo branch riêng, commit, push
+- [ ] mở PR đúng template, có reviewer
+- [ ] review ít nhất một PR của bạn khác
+- [ ] merge PR sau khi có approval, pull main về máy
+- [ ] tự tạo conflict, gỡ, hiểu ba marker
+- [ ] mở ít nhất một issue, biết dùng `Closes #X`
 
----
-
-## 🎓 Checklist tốt nghiệp
-
-Tự đánh giá — tick đủ là xong lộ trình:
-
-- [ ] `git config user.email` khớp email GitHub (commit có avatar)
-- [ ] Clone repo thành công
-- [ ] Tạo branch riêng, commit, push lên GitHub
-- [ ] Mở PR đúng template + add reviewer
-- [ ] Review (comment/approve) PR của ít nhất 1 bạn khác
-- [ ] Merge PR sau khi có approval, sync main về local
-- [ ] Tự tạo conflict, resolve, hiểu 3 markers
-- [ ] Mở ít nhất 1 issue và biết dùng `Closes #X`
-
-**Xong hết?** Chúc mừng 🎉 — mở 1 issue `[FEAT] Hoàn thành lộ trình self-study` với tên bạn để ghi nhận (và để Tommy biết ai cần bài nâng cao: gh CLI, GitHub Actions, CI/CD...).
-
----
+Đủ hết thì mở issue `[FEAT] Hoàn thành lộ trình self-study` kèm tên bạn. Thiện sẽ biết ai sẵn sàng sang phần nâng cao: GitHub CLI, Actions, CI/CD.
 
 ## Xử lý lỗi thường gặp
 
-### `git push` báo `Permission denied`
+**`git push` báo Permission denied.** Hoặc bạn chưa accept invite vào org, hoặc git chưa có chứng thực. Cách nhanh nhất là dùng Personal Access Token: vào Settings, Developer settings, Personal access tokens, Tokens (classic), Generate new token, chọn scope `repo`. Lần push sau, git hỏi username thì nhập username, hỏi password thì dán token (không phải password GitHub).
 
-→ Bạn chưa Accept invite org, hoặc chưa setup auth cho git.
-
-```bash
-# Nhanh nhất: dùng HTTPS với Personal Access Token
-# 1. Tạo token: GitHub → Settings → Developer settings → Personal access tokens → Tokens (classic) → Generate new token
-# 2. Chọn scope: repo
-# 3. Khi push lần đầu, nhập username + token (không phải password)
-```
-
-Hoặc setup SSH:
+Thích SSH thì vậy:
 
 ```bash
 ssh-keygen -t ed25519 -C "your-email@example.com"
 cat ~/.ssh/id_ed25519.pub
-# Copy toàn bộ output → GitHub → Settings → SSH and GPG keys → New SSH key
-ssh -T git@github.com  # test
+# copy output, thêm vào Settings, SSH and GPG keys
+ssh -T git@github.com   # hiện "Hi <username>!" là được
 ```
 
-### `git commit` không có gì để commit
+**`git commit` bảo nothing to commit.** Bạn chưa stage file. Chạy `git add .` trước.
 
-→ Bạn chưa `git add` file. Chạy `git add .` trước.
-
-### `git push` báo `non-fast-forward`
-
-→ Có người merge lên main trước bạn:
+**`git push` báo non-fast-forward.** Có ai đó vừa merge lên main trước bạn:
 
 ```bash
 git pull --rebase origin main
 git push
 ```
 
-### Quên mất branch
+**Quên tên branch của mình.**
 
 ```bash
-git branch -a          # list tất cả branch
+git branch -a
 git checkout main
 git pull
 ```
 
-### Commit nhầm author
+**Commit nhầm author.**
 
 ```bash
 git commit --amend --author="Liem Bui <liem@asw.global>"
 ```
 
-### Vim mở ra và không thoát được (sau lệnh `git commit`)
+**Vim mở ra và không thoát được** (thường là sau `git commit`). Gõ `:wq` rồi Enter. Muốn đổi sang editor khác hẳn: `git config --global core.editor "code --wait"`.
 
-Gõ `:wq` rồi Enter (ghi & thoát). Muốn dùng editor khác: `git config --global core.editor "code --wait"`.
+## Đọc thêm
 
----
-
-## 📚 Tài liệu tham khảo
-
-- [GitHub Docs — Pull Requests](https://docs.github.com/en/pull-requests)
+- [GitHub Docs — Pull requests](https://docs.github.com/en/pull-requests)
 - [Conventional Commits](https://www.conventionalcommits.org/)
-- [Pro Git book (free)](https://git-scm.com/book/en/v2)
-- [Oh My Git! — game học git interactive](https://ohmygit.org/)
-- [Learn Git Branching — visualizer cực tốt](https://learngitbranching.js.org/)
+- [Pro Git](https://git-scm.com/book/en/v2) — đọc miễn phí, chương 2 và 3 là đủ dùng lâu
+- [Learn Git Branching](https://learngitbranching.js.org/) — mô phỏng trực quan, chơi vài level là hiểu branch
+- [Oh My Git!](https://ohmygit.org/) — game học git
 
 ---
 
-**Maintainer:** Tommy (`thien-soy`) — review PR trong giờ làm việc, hỏi gấp thì Slack
-**Last updated:** phiên bản self-study
+Maintainer: Thiện (`thien-soy`). Review PR trong giờ làm việc, hỏi gấp thì Slack.

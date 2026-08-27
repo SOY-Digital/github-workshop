@@ -1,62 +1,54 @@
-# Bài tập 2 — Favorite Resources List (25 phút)
+# Bài tập 2 — Danh sách tài nguyên hay (25 phút)
 
-**Mục tiêu:** Thực hành mở issue trước khi code, xử lý feedback trong PR review.
+Bài trước bạn học flow PR. Bài này thêm một thói quen của team chuyên nghiệp: mở issue trước khi làm, và xử lý feedback trong lúc review.
 
-## Scenario
+## Bối cảnh
 
-Team muốn xây dựng một **shared list** các tài nguyên hay (blog, tool, course, book) mà mỗi người recommend. Mỗi người phụ trách 1 category.
+Team muốn dựng một danh sách chung các tài nguyên đáng đọc: blog, tool, khóa học, sách. Mỗi người phụ trách một mảng:
 
-## Categories (nhận phần ngay khi bắt đầu bài — ai nhanh chọn trước)
+| Mảng | Người phụ trách | File |
+|---|---|---|
+| Dev tools | `liemsoy` | `resources/dev-tools.md` |
+| Learning | `ngocsoyasw` | `resources/learning.md` |
+| Productivity | `QuangSoyAgency` | `resources/productivity.md` |
+| Fun / Inspo | `anhsoyagency` | `resources/fun-inspo.md` |
 
-| Category       | Owner             | File                              |
-|----------------|-------------------|-----------------------------------|
-| Dev tools      | `liemsoy`         | `resources/dev-tools.md`          |
-| Learning       | `ngocsoyasw`      | `resources/learning.md`           |
-| Productivity   | `QuangSoyAgency`  | `resources/productivity.md`       |
-| Fun / Inspo    | `anhsoyagency`    | `resources/fun-inspo.md`          |
+Ai làm nhanh thì chọn mảng trước. Hai người muốn đổi mảng cho nhau thì trao đổi trong issue.
 
-## Flow bắt buộc
+## Các bước
+
+Bước 1: mở issue trước. Tab Issues, New issue, điền đại loại "[FEAT] Thêm danh sách dev tools — Liem". Issue là chỗ ghi lại việc cần làm và trao đổi, PR chỉ là chỗ giao kết quả.
+
+Bước 2 đến 5:
 
 ```bash
-# 1. Mở issue trước (track được conversation)
-# GitHub UI → Issues → New issue → "Add favorite resources for <category>"
-
-# 2. Tạo branch từ issue
-# Ví dụ: issue #7 → branch: feat/liemsoy-dev-tools
+# branch mới, đặt tên theo issue và mảng của bạn
 git checkout main && git pull
 git checkout -b feat/<github-user>-<category>
 
-# 3. Tạo file + thêm tối thiểu 3 resources
+# tạo file, mỗi tài nguyên gồm: tên, link, một hai dòng vì sao đáng đọc
 mkdir -p resources
-touch resources/<category>.md
+# (soạn nội dung resources/<category>.md, tối thiểu 3 mục)
 
-# Format mỗi resource:
-# - Tên
-# - URL
-# - 1-2 dòng mô tả tại sao hay
-
-# 4. Commit + push + mở PR
-# 5. Trong PR description: "Closes #7"
-# 6. Add reviewer là bạn khác trong team → có approval → tự merge
+git add resources/<category>.md
+git commit -m "feat: add favorite dev tools list"
+git push -u origin feat/<github-user>-<category>
 ```
 
-## Review yêu cầu
+Bước 6: mở PR, trong description thêm `Closes #<số issue>` ở bước 1. Thêm reviewer là một bạn khác, có approval thì merge.
 
-Reviewer check:
-- Format đúng chưa
-- Resources có thật sự liên quan không (không spam)
-- Có link hợp lệ không
+## Người review kiểm tra gì
 
-## Done khi
+Mỗi mục có đủ tên, link, lý do chưa. Link có sống không (bấm thử). Nội dung có đúng mảng không — danh sách dev tools mà toàn meme thì phải đổi mảng chứ không phải đổi tên file.
 
-- [ ] Đã mở issue trước khi code
-- [ ] File `resources/<category>.md` có ≥ 3 resources
-- [ ] PR có `Closes #X` để auto-close issue
-- [ ] PR đã merged
-- [ ] Issue đã tự động đóng sau khi merge
+## Xong khi nào
 
-## Stretch goal 🌟
+- Issue mở trước, PR reference đúng issue bằng `Closes #X`
+- File có tối thiểu 3 tài nguyên, đủ ba thành phần trên mỗi mục
+- PR được merge, issue tự đóng theo
 
-- Thêm emoji rating ⭐⭐⭐⭐⭐
-- Sort theo category phụ (free/paid, beginner/advanced)
-- Cross-link resources giữa các file
+## Làm thêm nếu muốn
+
+- Đánh giá sao cho từng mục (một đến năm sao, kiểu `***`)
+- Gắn nhãn free/paid cho từng tài nguyên
+- Link chéo giữa các file khi hai mảng có mục liên quan

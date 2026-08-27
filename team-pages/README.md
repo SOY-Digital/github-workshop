@@ -1,18 +1,12 @@
-# 👥 Team Pages
+# Trang của từng thành viên
 
-Thư mục này chứa trang giới thiệu của từng thành viên team.
+| Người | File | Trạng thái |
+|---|---|---|
+| Liem Bui | [liemsoy.md](./liemsoy.md) | chờ bài tập 1 |
+| Ngoc Le | [ngocsoyasw.md](./ngocsoyasw.md) | chờ bài tập 1 |
+| Quang Hoang | [QuangSoyAgency.md](./QuangSoyAgency.md) | chờ bài tập 1 |
+| Anh Le | [anhsoyagency.md](./anhsoyagency.md) | chờ bài tập 1 |
 
-| Thành viên       | File                              | Status      |
-|------------------|-----------------------------------|-------------|
-| Liem Bui         | [liemsoy.md](./liemsoy.md)       | ⏳ pending  |
-| Ngoc Le          | [ngocsoyasw.md](./ngocsoyasw.md) | ⏳ pending  |
-| Quang Hoang      | [QuangSoyAgency.md](./QuangSoyAgency.md) | ⏳ pending |
-| Anh Le           | [anhsoyagency.md](./anhsoyagency.md) | ⏳ pending |
+Các link trên sẽ 404 cho đến khi từng bạn merge PR bài tập 1 của mình. Đó không phải lỗi — chính là mục tiêu của bài tập.
 
-**Convention:**
-- Mỗi người tạo 1 file `<github-user>.md` (VD: `liemsoy.md`)
-- Copy nội dung từ [`_template.md`](./_template.md)
-- Đặt vào branch riêng `feat/<github-user>-intro`
-- Mở PR để được merge
-
-> 💡 Các link file phía trên sẽ 404 cho tới khi từng bạn merge PR bài tập 1 của mình — đó chính là mục tiêu của bài tập!
+Cách làm: copy [_template.md](./_template.md) thành `<github-user>.md`, sửa nội dung, push lên branch `feat/<github-user>-intro`, mở PR.

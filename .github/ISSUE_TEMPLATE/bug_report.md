@@ -1,30 +1,27 @@
 ---
-name: 🐛 Bug Report
-about: Báo cáo lỗi trong nội dung repo (typo, link hỏng, format sai...)
+name: Báo lỗi
+about: Báo nội dung sai, link chết, format hỏng trong repo
 title: "[BUG] "
 labels: bug
 assignees: ''
 ---
 
-## Mô tả lỗi
+## Lỗi là gì
 
-<!-- Mô tả ngắn gọn lỗi là gì -->
+<!-- Mô tả ngắn -->
 
-## Cách tái tạo
+## Tái hiện thế nào
 
-<!-- Bước 1: ... -->
-<!-- Bước 2: ... -->
-<!-- Kết quả mong đợi: ... -->
-<!-- Kết quả thực tế: ... -->
+<!-- Bước 1... kết quả mong đợi... kết quả thực tế... -->
 
 ## File liên quan
 
-<!-- Đường dẫn file, ví dụ: README.md dòng 42, exercises/exercise-2.md -->
+<!-- Ví dụ: README.md dòng 42 -->
 
-## Screenshot (nếu có)
+## Ảnh chụp (nếu có)
 
-<!-- Paste ảnh vào đây -->
+<!-- Paste thẳng vào đây -->
 
-## Đề xuất fix
+## Đề xuất sửa
 
-<!-- Nếu biết cách sửa, mô tả ngắn -->
+<!-- Nếu biết cách sửa -->

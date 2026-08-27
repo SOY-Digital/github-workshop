@@ -1,6 +1,6 @@
 ---
-name: ❓ Question
-about: Đặt câu hỏi về repo, workflow, hoặc workshop
+name: Hỏi
+about: Câu hỏi về repo, workflow, hoặc bài tập
 title: "[QUESTION] "
 labels: question
 assignees: ''
@@ -8,12 +8,10 @@ assignees: ''
 
 ## Câu hỏi
 
-<!-- Câu hỏi của bạn -->
+## Bạn đang làm gì, gặp kẹt ở đâu
 
-## Context
+<!-- Đang ở bước nào của tài liệu -->
 
-<!-- Bạn đang làm gì? Gặp vấn đề gì? -->
+## Đã thử gì rồi
 
-## Đã thử
-
-<!-- Đã thử cách nào? Kết quả? -->
+<!-- Lệnh đã chạy, kết quả nhận được. Có error thì paste đầy đủ -->

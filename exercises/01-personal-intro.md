@@ -1,50 +1,47 @@
-# Bài tập 1 — Personal Intro Page (20 phút)
+# Bài tập 1 — Trang giới thiệu của bạn (20 phút)
 
-**Mục tiêu:** Làm quen với toàn bộ flow: clone → branch → commit → push → PR → review → merge.
+Bài này đi qua trọn vòng: clone → branch → commit → push → PR → review → merge. Làm xong là bạn đã nắm 80% flow làm việc nhóm.
 
-## Yêu cầu
+## Việc cần làm
 
-Mỗi thành viên tạo file `team-pages/<github-user>.md` chứa:
-- Tên + GitHub user
-- Role trong team
-- 1 dòng giới thiệu
-- 1 thứ muốn học ở workshop
+Tạo file `team-pages/<github-user>.md` (ví dụ `liemsoy.md`) chứa: tên và github user, vai trò trong team, một dòng giới thiệu, một thứ bạn muốn học sau khóa này.
 
-## Step-by-step
+## Từng bước
 
 ```bash
-# 1. Sync main
+# về main mới nhất
 git checkout main && git pull origin main
 
-# 2. Tạo branch riêng
+# branch riêng của bạn
 git checkout -b feat/<github-user>-intro
 
-# 3. Copy template và sửa
-cp team-pages/_template.md team-pages/<github-user>.md
-# Sửa file bằng editor yêu thích
+# copy template rồi sửa nội dung
+cp team-pages/_template.md team-pages/<github-user>.md     # macOS/Linux
+# Windows PowerShell: Copy-Item team-pages/_template.md team-pages/<github-user>.md
 
-# 4. Stage + commit
+# stage, commit, push
 git add team-pages/<github-user>.md
 git commit -m "feat: add intro page for <github-user>"
-
-# 5. Push
 git push -u origin feat/<github-user>-intro
-
-# 6. Mở PR trên GitHub UI
-# 7. Add 1 reviewer là bạn khác trong team (review chéo — không cần chờ Tommy)
-# 8. Có approval → tự bấm "Squash and merge"
 ```
 
-## Done khi
+Rồi mở PR trên GitHub (bấm nút Compare & pull request trên banner vàng). Thêm reviewer là một bạn khác trong team. Đủ approval thì tự bấm Squash and merge.
 
-- [ ] File `<github-user>.md` đã có trong `team-pages/`
-- [ ] PR đã merged vào `main`
-- [ ] Đã có ít nhất 1 người review PR của bạn
-- [ ] Bạn đã review PR của ít nhất 1 người khác
-- [ ] Local đã sync với `main` mới nhất
+Nếu có issue giao bài này cho bạn thì thêm `Closes #<số>` vào PR description để issue tự đóng.
 
-## Stretch goal 🌟
+## Xong khi nào
 
-- Thêm emoji header cho sinh động
-- Nhúng ảnh avatar (dùng URL từ GitHub profile)
-- Thêm section "Goals năm 2026"
+- File `<github-user>.md` đã nằm trong `team-pages/` trên main
+- PR của bạn đã được merge, và đã có ít nhất một người review nó
+- Bạn đã review PR của ít nhất một bạn khác
+- Máy local đã pull main mới nhất về
+
+## Làm thêm nếu muốn
+
+- Nhúng avatar: lấy URL ảnh từ profile GitHub của bạn
+- Thêm mục mục tiêu năm 2026
+- Trang trí heading bằng emoji — bài này thôi nhé, repo khác người ta có thể không thích
+
+## Lỗi hay gặp
+
+Commit không có avatar của bạn trên GitHub: email git chưa khớp email GitHub. Xem lại Phần 0 của WORKSHOP.md.

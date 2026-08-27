@@ -1,108 +1,100 @@
-# Bài tập 3 — Merge Conflict Drill (20 phút)
+# Bài tập 3 — Tự tạo merge conflict rồi tự gỡ (20 phút)
 
-**Mục tiêu:** Hết sợ merge conflict — tự tay tạo một conflict THẬT, đọc được markers, tự resolve.
+Conflict là thứ khiến người mới sợ git nhất. Cách hết sợ là làm cho ra: bài này bạn sẽ tự tay tạo một conflict thật trên máy mình, đọc hiểu nó muốn nói gì, rồi gỡ lấy. Làm một mình, không cần ai phối hợp.
 
-> Bài này làm **một mình**, 100% trên máy local — không cần đợi ai review hay phối hợp giờ giấc.
+## Conflict xảy ra khi nào
 
-## Conflict xảy ra khi nào?
+Hai branch cùng sửa một dòng từ cùng một điểm xuất phát. Lúc merge, git không biết giữ bên nào, nên nó đưa quyết định lại cho bạn. Bài này mô phỏng đúng tình huống thật: bạn và một đồng nghiệp cùng sửa một file song song.
 
-Khi 2 branch cùng sửa **cùng 1 dòng** từ cùng một điểm xuất phát, git không biết giữ bên nào → conflict. Drill này mô phỏng đúng tình huống thực tế: bạn và một đồng nghiệp cùng sửa 1 file song song.
+File để luyện có sẵn: [conflict-target.md](./conflict-target.md). Mọi thay đổi chỉ xảy ra ở dòng 3.
 
-## Drill
-
-File drill đã có sẵn trong repo: [`exercises/conflict-target.md`](./conflict-target.md). Tất cả thay đổi chỉ ở **dòng 3** của file đó.
+## Tạo conflict
 
 ```bash
-# Bước 1 — mô phỏng "đồng nghiệp": branch khác sửa dòng 3
+# bước 1 — đóng vai "đồng nghiệp": một branch khác sửa dòng 3
 git checkout main && git pull
 git checkout -b chore/other-rule
-# SỬA DÒNG 3: thay <VIẾT RULE...> bằng 1 rule (VD: "3. Code xong phải tự test trước khi mở PR")
+# sửa dòng 3: thay phần <...> bằng một rule, ví dụ "3. Code xong phải tự test trước khi mở PR"
 git add exercises/conflict-target.md
 git commit -m "docs: add rule 3 from other branch"
 
-# Bước 2 — branch "của bạn": cũng sửa dòng 3, từ CÙNG main (chưa có rule trên)
+# bước 2 — đóng vai "bạn": cũng sửa dòng 3, nhưng từ main (chưa có rule trên)
 git checkout main
 git checkout -b docs/my-rule
-# SỬA DÒNG 3 bằng rule KHÁC của bạn (VD: "3. Không bao giờ push thẳng vào main")
+# sửa dòng 3 bằng rule KHÁC của bạn, ví dụ "3. Không bao giờ push thẳng vào main"
 git add exercises/conflict-target.md
 git commit -m "docs: add my rule 3"
 
-# Bước 3 — "đồng nghiệp" merge trước: gộp rule của họ vào main LOCAL
+# bước 3 — "đồng nghiệp" merge trước: đưa rule của họ vào main (bản local)
 git checkout main
-git merge chore/other-rule      # chạy sạch (không ai khác sửa gì)
+git merge chore/other-rule        # merge sạch, không sao cả
 
-# Bước 4 — giờ merge main vào branch của bạn → CONFLICT
+# bước 4 — giờ merge main vào branch của bạn
 git checkout docs/my-rule
 git merge main
-# Git sẽ báo:
-# CONFLICT (content): Merge conflict in exercises/conflict-target.md
-# Automatic merge failed; fix conflicts and then commit the result.
 ```
 
-## Đọc conflict markers
+Bước 4 git sẽ báo:
 
-Mở `exercises/conflict-target.md`, bạn sẽ thấy:
+```
+CONFLICT (content): Merge conflict in exercises/conflict-target.md
+Automatic merge failed; fix conflicts and then commit the result.
+```
 
-```text
+Đó chính là điều bạn muốn tạo ra.
+
+## Đọc conflict
+
+Mở `exercises/conflict-target.md`:
+
+```
 <<<<<<< HEAD
-3. Không bao giờ push thẳng vào main      ← phía BẠN (branch hiện tại = HEAD)
+3. Không bao giờ push thẳng vào main        <- phía bạn (branch hiện tại)
 =======
-3. Code xong phải tự test trước khi mở PR  ← phía main (đồng nghiệp merge trước)
+3. Code xong phải tự test trước khi mở PR   <- phía main (đồng nghiệp merge trước)
 >>>>>>> main
 ```
 
-Cách đọc:
+Ba marker: mọi thứ giữa `<<<<<<< HEAD` và `=======` là của bạn, giữa `=======` và `>>>>>>> main` là của phía kia. Git không chọn hộ bạn — nó chờ bạn quyết.
 
-| Marker | Nghĩa |
-|---|---|
-| `<<<<<<< HEAD` ... `=======` | thay đổi trên **branch của bạn** |
-| `=======` ... `>>>>>>> main` | thay đổi từ **main** mà bạn đang gộp vào |
+## Gỡ
 
-## Resolve
+Ba lựa chọn: giữ của bạn, giữ của họ, hoặc gộp cả hai. Thường thì gộp cả hai là đúng — hai người cùng có ý muốn sửa, chỉ là chưa biết về nhau. Giữ cả hai rules, biến thành dòng 3 và dòng 4.
 
-1. Quyết định giữ gì — 3 lựa chọn:
-   - Giữ của bạn, xóa của main
-   - Giữ của main, xóa của bạn
-   - **Gộp cả hai** thành dòng 3 + dòng 4 (khuyến nghị — thực tế hay gặp nhất)
-2. Sửa file cho ra nội dung cuối, **xóa sạch cả 3 markers**
-3. Hoàn tất merge:
+Sửa file cho ra kết quả cuối, xóa sạch cả ba marker, rồi:
 
 ```bash
-git status                        # file conflict hiện "both modified"
-# (sửa file tại đây nếu chưa sửa)
+git status                                        # file hiện "both modified"
 git add exercises/conflict-target.md
-git commit                        # giữ nguyên message merge mặc định, chỉ cần save & thoát editor
+git commit                                        # giữ nguyên message merge mặc định
 ```
 
-> Nếu vim hiện ra và bạn không thoát được: gõ `:wq` rồi Enter (ghi & thoát).
+Nếu vim bật lên: gõ `:wq` rồi Enter.
 
-## Push kết quả (tùy chọn nhưng nên làm)
+## Push kết quả (nên làm)
 
 ```bash
 git push -u origin docs/my-rule
-# Mở PR trên GitHub, trong description ghi rõ: "Bài tập 3 — conflict drill, đã resolve, gộp 2 rules"
-# Tommy sẽ review như thường lệ — không gấp, làm bài khác trong lúc chờ.
 ```
 
-## Done khi
+Mở PR, ghi rõ trong description rằng đây là bài conflict drill và bạn đã gộp cả hai rules. Thiện sẽ review như thường lệ, không gấp — cứ làm tiếp phần khác trong lúc chờ.
 
-- [ ] Đã tự tạo được conflict ở Bước 4 (git báo CONFLICT)
-- [ ] Giải thích được 3 markers `<<<<<<<`, `=======`, `>>>>>>>` nghĩa là gì
-- [ ] File sau resolve KHÔNG còn marker nào, có ít nhất 2 rules (dòng 3, 4)
-- [ ] `git log --oneline --graph -6` hiện merge commit hình chữ V
+## Xong khi nào
 
-## Dọn dẹp sau drill (giữ main sạch cho người sau)
+- Bước 4 git có báo CONFLICT (tức là bạn đã tạo đúng tình huống)
+- Giải thích được ba marker nghĩa là gì mà không cần nhìn lại tài liệu
+- File sau khi gỡ không còn marker nào, và có cả hai rules
+- `git log --oneline --graph -6` hiện merge commit hình chữ V
+
+## Dọn sau khi luyện
 
 ```bash
-git checkout main && git pull
-git branch -D chore/other-rule docs/my-rule   # xoá branch drill local
-# KHÔNG push main local (đã gộp rule ở bước 3) — để nguyên, GitHub main là chuẩn
+git checkout main
+git branch -D chore/other-rule docs/my-rule
 ```
 
-> ⚠️ Bước 3 đã gộp rule vào **main local** của bạn. Khi `git pull` sau này, nếu remote main không có rule đó (Tommy không merge PR drill), git sẽ báo lệch — cứ để local main đuổi theo remote: nếu gặp thông báo, chạy `git pull` rồi chọn giữ bản remote (revert local bằng `git reset --hard origin/main` — an toàn vì drill chỉ là tập).
+Lưu ý: bước 3 đã đưa rule "đồng nghiệp" vào main bản local của bạn, trong khi main trên GitHub không có. Gặp thông báo lệch khi pull sau này thì chạy `git reset --hard origin/main` để lấy main remote làm chuẩn — an toàn, vì đây chỉ là bài luyện.
 
-## Mẹo
+## Vài lời
 
-- Đây là bài **khó nhất** của lộ trình — mất 2-3 lần làm mới nhớ là bình thường.
-- Conflict thật trong dự án: luôn đọc kỹ CẢ HAI phía trước khi chọn, không ưu tiên "của mình luôn đúng".
-- VSCode có merge editor trực quan: click "Resolve in Merge Editor" khi git báo conflict.
+Đây là bài khó nhất của lộ trình, làm hai ba lần mới nhớ là bình thường. Khi gặp conflict thật trong dự án: đọc kỹ cả hai phía trước khi chọn, đừng mặc định phía mình luôn đúng. VSCode có merge editor trực quan — bấm "Resolve in Merge Editor" khi git báo conflict là thấy.

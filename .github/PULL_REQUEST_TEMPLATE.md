@@ -1,31 +1,28 @@
-## Summary
+## Tóm tắt
 
-<!-- 1-3 dòng mô tả PR này làm gì -->
+<!-- Một đến ba dòng: PR này làm gì -->
 
-## Changes
+## Thay đổi
 
-<!-- List file/folder đã thay đổi -->
--
--
+<!-- Các file/folder liên quan -->
 -
 
-## Related Issue
+## Issue liên quan
 
-<!-- Link tới issue (nếu có). Dùng `Closes #12` để tự đóng issue khi merge -->
+<!-- Nếu có. Dùng `Closes #12` để issue tự đóng khi merge -->
 Closes #
 
-## How to test
+## Cách kiểm tra
 
-<!-- Bước để reviewer test PR này -->
+<!-- Người review làm gì để kiểm chứng -->
 1.
 2.
-3.
 
 ## Checklist
 
-- [ ] Branch name đúng convention (`feat/`, `fix/`, `docs/`...)
-- [ ] Commit message đúng conventional commits format
-- [ ] PR title mô tả rõ thay đổi
-- [ ] Đã tự review file changes của mình
-- [ ] Không có conflict với `main`
-- [ ] Đã add reviewer
+- [ ] Branch đúng quy ước (`feat/`, `fix/`, `docs/`...)
+- [ ] Commit message theo conventional commits
+- [ ] Tiêu đề PR nói rõ thay đổi
+- [ ] Đã tự đọc lại tab Files changed trước khi nhờ review
+- [ ] Không conflict với `main`
+- [ ] Đã thêm reviewer

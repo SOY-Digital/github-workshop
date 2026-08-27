@@ -1,30 +1,28 @@
 # <Tên của bạn>
 
-> Trang giới thiệu cá nhân trong repo workshop — tạo bằng cách copy file này thành `<github-user>.md`.
+Trang giới thiệu của bạn trong repo. Copy file này thành `<github-user>.md` (ví dụ `liemsoy.md`) rồi sửa các mục bên dưới.
+
+## Thông tin
+
+| | |
+|---|---|
+| Tên | Nguyễn Văn A |
+| GitHub | @liemsoy |
+| Vai trò | Developer / Marketer / ... |
+| Vào ASW từ | 2026-01 |
+
+## Một dòng giới thiệu
+
+<!-- Ví dụ: Mình là Liem, làm frontend, nghiện cà phê sữa đá và code lúc nửa đêm. -->
+
+## Một thứ muốn học được sau khóa này
+
+<!-- Ví dụ: dám review PR của người khác, hoặc hết sợ merge conflict. -->
+
+## Sở thích / fun fact
+
+<!-- Gì cũng được. -->
 
 ---
 
-## Thông tin cơ bản
-
-| Field        | Value                          |
-|--------------|--------------------------------|
-| **Tên**      | Nguyễn Văn A                   |
-| **GitHub**   | @liemsoy                       |
-| **Role**     | Developer / Marketer / ...     |
-| **Ngày tham gia ASW** | 2026-01-15           |
-
-## 1 dòng giới thiệu
-
-<!-- Ví dụ: Mình là Liem Bui, làm frontend, thích cà phê sữa đá và code lúc nửa đêm. -->
-
-## 1 thứ mình muốn học ở workshop này
-
-<!-- Ví dụ: Tự tin review PR của người khác, hoặc merge conflict không còn là nỗi sợ. -->
-
-## Sở thích / Fun fact
-
-<!-- Bất kỳ điều gì bạn muốn chia sẻ -->
-
----
-
-> Tip: Sau khi sửa xong, nhớ `git add` → `git commit` → `git push` → mở PR nhé!
+Xong thì nhớ: `git add` → `git commit` → `git push` → mở PR.
