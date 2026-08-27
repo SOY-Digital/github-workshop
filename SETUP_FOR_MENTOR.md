@@ -6,10 +6,10 @@
 
 - ✅ Repo đã live: **https://github.com/SOY-Digital/github-workshop** (org SOY-Digital)
 - ✅ Local repo: `/Users/tommynguyen/Developer/work/SOY-SM-WORK/github-workshop` (remote đã trỏ org)
-- ✅ **Bước 2 done** (2026-08-27): squash-only + auto-merge + auto-delete branch đã bật qua API; branch protection `main` đã bật (1 approval, dismiss stale, conversation resolution, admin bypass)
-- 🔶 **Bước 1 đang dở**: `anhsoyagency`, `ngocsoyasw` đã accept · `liemsoy`, `QuangSoyAgency` đã mời nhưng **chưa accept** (nhắc họ check email/spam)
-- ⬜ Bước 3 (4 issue mở đầu) — chưa làm
-- ⬜ Bước 4 (verify) — chưa làm
+- ✅ **Bước 1 done (2026-08-27):** collaborators đã invite — `anhsoyagency`, `ngocsoyasw` đã accept · `liemsoy`, `QuangSoyAgency` đã mời nhưng **chưa accept** (nhắc họ check email/spam; khi accept xong thì vào issue #1, #3 self-assign)
+- ✅ **Bước 2 done:** squash-only + auto-merge + auto-delete branch đã bật qua API; branch protection `main` (1 approval, dismiss stale, conversation resolution, admin bypass)
+- ✅ **Bước 3 done:** 4 issue đã tạo — [#1](https://github.com/SOY-Digital/github-workshop/issues/1) liemsoy · [#2](https://github.com/SOY-Digital/github-workshop/issues/2) ngocsoyasw · [#3](https://github.com/SOY-Digital/github-workshop/issues/3) QuangSoyAgency · [#4](https://github.com/SOY-Digital/github-workshop/issues/4) anhsoyagency — label `good first issue`; #1, #3 chưa assign được (pending invite accept)
+- ✅ **Bước 4 done:** PR test #5 verify — squash-only hoạt động, merge bị chặn khi thiếu approval (`BLOCKED`), auto-merge path OK (SQUASH) — PR đã close + branch đã xoá; clone test từ máy bên ngoài pass
 
 ---
 
