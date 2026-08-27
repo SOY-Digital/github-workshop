@@ -19,8 +19,8 @@ Mentor tạo sẵn file `exercises/conflict-target.md` với nội dung:
 
 | Cặp       | Người A sửa line 3        | Người B sửa line 4        |
 |-----------|---------------------------|---------------------------|
-| Pair 1    | Liêm (`liemsoy`)          | Ngọc (`ngocsoyasw`)       |
-| Pair 2    | Quang (`QuangSoyAgency`)  | Anh (`anhsoyagency`)      |
+| Pair 1    | Liem Bui (`liemsoy`)     | Ngoc Le (`ngocsoyasw`)    |
+| Pair 2    | Quang Hoang (`QuangSoyAgency`) | Anh Le (`anhsoyagency`) |
 
 ## Flow
 

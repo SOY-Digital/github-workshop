@@ -15,7 +15,7 @@
 
 ## 1 dòng giới thiệu
 
-<!-- Ví dụ: Mình là Liêm, làm frontend, thích cà phê sữa đá và code lúc nửa đêm. -->
+<!-- Ví dụ: Mình là Liem Bui, làm frontend, thích cà phê sữa đá và code lúc nửa đêm. -->
 
 ## 1 thứ mình muốn học ở workshop này
 

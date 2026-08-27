@@ -11,10 +11,10 @@
 | Thành viên        | GitHub user        | Role trong repo                  |
 |-------------------|--------------------|----------------------------------|
 | Tommy (mentor)    | `thien-soy`        | Repo owner, review & merge       |
-| Liêm Sờ            | `liemsoy`          | Contributor                      |
-| Ngọc Sờ             | `ngocsoyasw`       | Contributor                      |
-| Quang (Agency)    | `QuangSoyAgency`   | Contributor                      |
-| Anh (Agency)      | `anhsoyagency`     | Contributor                      |
+| Liem Bui           | `liemsoy`          | Contributor                      |
+| Ngoc Le            | `ngocsoyasw`       | Contributor                      |
+| Quang Hoang        | `QuangSoyAgency`   | Contributor                      |
+| Anh Le             | `anhsoyagency`     | Contributor                      |
 
 ---
 
