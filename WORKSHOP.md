@@ -1,14 +1,14 @@
-# 🚀 WORKSHOP — Làm quen GitHub Workflow
+# 📚 SELF-STUDY — Làm quen GitHub Workflow
 
-> File này là **script chi tiết** cho buổi workshop. Mỗi phần có thời lượng ước tính. Mentor đọc trước, học viên follow theo.
+> Lộ trình **tự học ở nhà** — mỗi bạn tự làm theo tài liệu này theo tốc độ riêng. Không cần chờ ai, không cần hẹn giờ. Tommy review PR khi có thời gian (thường trong ngày làm việc).
+>
+> **Cách dùng:** làm tuần tự từ trên xuống. Mỗi phần có mục "✅ Xong khi" — chỉ sang phần sau khi self-check pass. Bị kẹt bất kỳ lúc nào → mở issue label `question` (xem Phần 7) hoặc nhắn Tommy.
 
-**Thời lượng tổng:** ~2.5 giờ (có thể chia 2 buổi nếu cần)
+**Thời lượng tham khảo:** ~2.5-3 giờ liền mạch, hoặc chia nhiều buổi nhỏ — mỗi phần dừng được, không mất tiến độ.
 
 ---
 
-## 📋 Chuẩn bị trước buổi học (15 phút — làm TRƯỚC khi bắt đầu)
-
-Mỗi học viên cần:
+## 📋 Phần 0 — Chuẩn bị (15 phút)
 
 ```bash
 # 1. Cài git (nếu chưa có)
@@ -30,24 +30,28 @@ git --version
 - Xem email tài khoản GitHub của bạn tại: `github.com` → Settings → **Emails** (đăng nhập bằng account của bạn).
 - Nếu không muốn lộ email thật: bật "Keep my email addresses private" rồi dùng email dạng `12345678+liemsoy@users.noreply.github.com` (GitHub hiện sẵn email này trong trang Emails).
 
-**Verify quyền truy cập:** Đảm bảo bạn đã nhận invite vào org **SOY-Digital** từ Tommy (check email, kể cả spam) và đã Accept.
+**Verify quyền truy cập:** Đảm bảo bạn đã nhận invite vào org **SOY-Digital** từ Tommy (check email, kể cả spam) và đã Accept. Chưa nhận → nhắn Tommy gửi lại.
+
+**✅ Xong khi:** `git --version` chạy được, `user.email` khớp email GitHub, đã Accept invite org.
 
 ---
 
-## Phần 1 — Tour GitHub UI (10 phút)
+## Phần 1 — Làm quen GitHub UI (10 phút)
 
-Mentor chia sẻ màn hình, walk-through:
+Tự khám phá repo **https://github.com/SOY-Digital/github-workshop** trên trình duyệt:
 
-| Vùng trên GitHub          | Dùng để làm gì                                  |
-|---------------------------|-------------------------------------------------|
-| **Code** tab              | Xem file, browse source                         |
-| **Issues** tab            | Đặt câu hỏi, báo bug, đề xuất tính năng        |
-| **Pull requests** tab     | Review code trước khi merge                     |
-| **Actions** tab           | CI/CD (sẽ dùng ở workshop nâng cao)            |
-| **Settings** tab          | Phân quyền, branch protection (chỉ owner)       |
-| **Insights → Contributors** | Xem ai đóng góp bao nhiêu                     |
+| Vùng trên GitHub | Dùng để làm gì |
+|---|---|
+| **Code** tab | Xem file, browse source |
+| **Issues** tab | Đặt câu hỏi, báo bug, đề xuất tính năng |
+| **Pull requests** tab | Review code trước khi merge |
+| **Actions** tab | CI/CD (sẽ dùng ở mức nâng cao) |
+| **Settings** tab | Phân quyền, branch protection (chỉ owner thấy) |
+| **Insights → Contributors** | Xem ai đóng góp bao nhiêu |
 
-**Demo nhanh:** Mở 1 PR bất kỳ trên GitHub của ai đó (ví dụ React, Vue) → xem tab "Files changed" → "Commits" → "Reviews".
+**Gợi ý tự học:** Mở 1 PR thật của dự án nổi tiếng (ví dụ `facebook/react`) → xem tab "Files changed" → "Commits" → "Reviews" — quan sát người ta mô tả PR và review nhau kiểu gì.
+
+**✅ Xong khi:** Phân biệt được Issues với Pull Requests, biết tab nào để xem diff của PR.
 
 ---
 
@@ -74,11 +78,24 @@ open README.md   # macOS — Windows dùng: start README.md
 2. Có bao nhiêu file `.md` trong repo?
 3. Commit gần nhất là gì?
 
+<details>
+<summary>Đáp án (click mở)</summary>
+
+1. `main` (đây là branch protected)
+2. Đếm trong tab Code trên GitHub hoặc `find . -name "*.md" -not -path "./.git/*" | wc -l`
+3. `git log --oneline -1` — hiện SHA ngắn + commit message
+
+</details>
+
+**✅ Xong khi:** Trả lời được 3 câu trên mà không cần đoán.
+
 ---
 
 ## Phần 3 — Tạo branch & commit đầu tiên (20 phút)
 
-Mục tiêu: Mỗi người tạo file `team-pages/<github-user>.md` và push lên branch riêng.
+> Đây là nội dung của **[Bài tập 1](./exercises/01-personal-intro.md)** — làm theo file đó, quay lại đây khi xong.
+
+Mục tiêu: tạo file `team-pages/<github-user>.md` trên branch riêng và push lên GitHub.
 
 ```bash
 # 1. Đảm bảo đang ở main và sync mới nhất
@@ -110,11 +127,13 @@ git push -u origin feat/liemsoy-intro
 
 **⚠️ Nếu gặp lỗi authentication:** xem mục [Xử lý lỗi thường gặp](#xử-lý-lỗi-thường-gặp) ở cuối file.
 
+**✅ Xong khi:** Branch của bạn xuất hiện trên GitHub (tab Code → dropdown branch), commit có avatar GitHub của bạn.
+
 ---
 
 ## Phần 4 — Mở Pull Request (15 phút)
 
-Sau khi push thành công, GitHub sẽ hiện banner vàng với nút **"Compare & pull request"**.
+Sau khi push thành công, vào repo trên GitHub — sẽ hiện banner vàng với nút **"Compare & pull request"**.
 
 1. Click nút đó
 2. **Title:** `feat: add intro page for liemsoy` (copy từ commit message)
@@ -123,104 +142,94 @@ Sau khi push thành công, GitHub sẽ hiện banner vàng với nút **"Compare
    - **Changes:** list file đã sửa
    - **How to test:** `git checkout feat/liemsoy-intro && cat team-pages/liemsoy.md`
 4. Bên phải:
-   - **Reviewers:** add 1 người khác trong team (đừng chọn mình)
+   - **Reviewers:** add **một bạn khác trong team** (đừng chọn mình, đừng chọn Tommy làm reviewer đầu tiên)
    - **Labels:** `documentation`
-   - **Projects / Milestone:** bỏ qua
 5. Click **Create pull request**
 
-**Mentor walk-through:** Cách đọc tab "Files changed", để lại comment inline, suggest edit.
+**✅ Xong khi:** PR mở thành công, hiện "Awaiting review from ..." và template đã fill.
 
 ---
 
-## Phần 5 — Review PR (20 phút)
+## Phần 5 — Review PR cho bạn khác (15 phút)
 
-### 5.1 — Reviewer đọc code
+> Luật self-study: **mở 1 PR thì phải review 1 PR của bạn khác** — đây là vòng tuần hoàn của teamwork. Có 4 bạn → mỗi PR sẽ luôn có người review mà không cần chờ Tommy.
 
-Trong PR trên GitHub:
+Trong PR mà bạn được add reviewer (tab **"Files changed"**):
 
-1. Tab **"Files changed"** → đọc từng dòng
+1. Đọc từng dòng thay đổi
 2. Hover vào dòng bất kỳ → click **"+"** để comment
-3. Có 3 kiểu review:
-   - **Comment:** góp ý, không block merge
-   - **Approve:** OK, có thể merge
+3. Chốt bằng 1 trong 3 kiểu review (nút **"Review changes"** góc phải):
+   - **Comment:** góp ý, không chặn merge
+   - **Approve:** OK, cho merge
    - **Request changes:** phải sửa trước khi merge
 
-### 5.2 — Author phản hồi
+**Gợi ý comment hữu ích cho người mới:** "Section X hay, nhưng tên file nên là...", "Đây có phải ý bạn là...?", "Link này bị 404 nè". Tránh chỉ gõ "ok" / "+1" — không có thông tin.
 
-Khi có comment → author:
-- Trả lời trực tiếp trong thread comment
-- Nếu có thay đổi → push commit mới lên cùng branch
-- Click **"Re-request review"** để reviewer check lại
+### Khi chính PR của bạn được review
 
-### 5.3 — Merge
-
-Khi PR có ≥ 1 approval:
-- Click **"Squash and merge"** (repo này cấu hình squash làm mặc định — gom mọi commit trên branch thành 1 commit gọn trong `main`)
-- **Quan trọng:** Repo đã bật tự động xóa branch sau merge. Nếu vẫn thấy branch, click nút **"Delete branch"**. Local thì tự dọn:
+- Có comment → trả lời trong thread; nếu cần sửa → push commit mới lên **cùng branch** (PR tự cập nhật)
+- Có "Request changes" → sửa xong push, rồi click **"Re-request review"** để người review check lại
+- Có ≥ 1 approval → tự bấm **"Squash and merge"** (repo cấu hình squash + auto-delete branch) — không cần chờ ai cho phép
 
 ```bash
+# Sau khi merge, dọn local:
 git checkout main
 git pull origin main
 git branch -d feat/liemsoy-intro
 ```
 
----
-
-## Phần 6 — Xử lý Merge Conflict (20 phút — BONUS)
-
-Mentor tạo sẵn conflict scenario: 2 người cùng sửa `README.md`. Học viên tự resolve.
-
-```bash
-# Trong khi đang ở branch của mình, sync main mới nhất
-git fetch origin
-git merge origin/main
-# hoặc
-git rebase origin/main
-
-# Nếu có conflict:
-# <<<<<<< HEAD
-#   code của bạn
-# =======
-#   code từ main
-# >>>>>>> origin/main
-
-# Sửa file thủ công, xóa markers, rồi:
-git add .
-git commit -m "fix: resolve merge conflict in README.md"
-git push
-```
+**✅ Xong khi:** Bạn đã approve hoặc comment ít nhất 1 PR của bạn khác, và PR của bạn đã được merge (bởi bạn sau khi có approval).
 
 ---
 
-## Phần 7 — Issues & Discussions (15 phút)
+## Phần 6 — Xử lý Merge Conflict (20 phút — bài khó nhất)
 
-### 7.1 — Tạo issue
+> Đây là nội dung của **[Bài tập 3](./exercises/03-merge-conflict-drill.md)** — drill solo 100% local, tự tạo conflict thật rồi tự resolve. Làm theo file đó.
 
-```bash
-# Cách 1: Trên GitHub UI → tab Issues → New issue
-# Cách 2: Dùng template trong .github/ISSUE_TEMPLATE/
-```
+Nội dung chính bạn sẽ học:
+- Cách tạo tình huống 2 branch cùng sửa 1 dòng
+- Đọc 3 markers `<<<<<<<`, `=======`, `>>>>>>>`
+- Quyết định giữ gì và gộp 2 phía
 
-Mỗi học viên tạo **1 issue** đề xuất cải thiện workshop (ví dụ: thêm bài tập, đổi format, thêm template...).
-
-### 7.2 — Reference issue trong PR
-
-Trong PR description, thêm `Closes #5` → khi merge PR, issue tự động đóng.
+**✅ Xong khi:** Hoàn thành checklist trong Bài tập 3.
 
 ---
 
-## 🎓 Kết thúc & tự đánh giá
+## Phần 7 — Issues: cách hỏi khi bị kẹt (10 phút)
 
-Checklist mỗi người tự check:
+Tự học không có nghĩa học một mình — **issue là kênh hỏi chính** của repo này:
 
-- [ ] Đã cấu hình `git config --global user.name` đúng GitHub handle
-- [ ] Đã clone repo thành công
-- [ ] Đã tạo branch riêng và push lên
-- [ ] Đã mở ít nhất 1 PR
-- [ ] Đã review ít nhất 1 PR của người khác
-- [ ] Đã merge PR và sync main về local
-- [ ] (Bonus) Đã xử lý 1 merge conflict
-- [ ] (Bonus) Đã tạo 1 issue và link vào PR
+1. Tab **Issues → New issue** → chọn template **Question**
+2. Mô tả: bạn đang làm bước nào, chạy lệnh gì, thấy lỗi gì (paste đầy đủ error message)
+3. Điền tiêu đề rõ: `[QUESTION] git push báo Permission denied dù đã accept invite`
+
+Mẹo hỏi hiệu quả (áp dụng luôn cho Slack):
+- Paste **full error message**, đừng chụp màn hình cropped
+- Nêu command đã chạy + kết quả mong đợi vs kết quả thực tế
+- Nêu những gì đã thử
+
+**Bonus tự học:** Mỗi bạn sau khi xong lộ trình, mở 1 issue Feature Request đề xuất cải thiện repo (thêm bài tập, đổi format...) — đây cũng là cách luyện viết issue.
+
+**Reference issue trong PR:** thêm `Closes #5` vào PR description → issue tự đóng khi PR merge.
+
+**✅ Xong khi:** Đã mở ít nhất 1 issue (question hoặc feature request).
+
+---
+
+## 🎓 Checklist tốt nghiệp
+
+Tự đánh giá — tick đủ là xong lộ trình:
+
+- [ ] `git config user.email` khớp email GitHub (commit có avatar)
+- [ ] Clone repo thành công
+- [ ] Tạo branch riêng, commit, push lên GitHub
+- [ ] Mở PR đúng template + add reviewer
+- [ ] Review (comment/approve) PR của ít nhất 1 bạn khác
+- [ ] Merge PR sau khi có approval, sync main về local
+- [ ] Tự tạo conflict, resolve, hiểu 3 markers
+- [ ] Mở ít nhất 1 issue và biết dùng `Closes #X`
+
+**Xong hết?** Chúc mừng 🎉 — mở 1 issue `[FEAT] Hoàn thành lộ trình self-study` với tên bạn để ghi nhận (và để Tommy biết ai cần bài nâng cao: gh CLI, GitHub Actions, CI/CD...).
 
 ---
 
@@ -228,7 +237,7 @@ Checklist mỗi người tự check:
 
 ### `git push` báo `Permission denied`
 
-→ Bạn chưa được Tommy add làm Collaborator, hoặc chưa setup SSH/token.
+→ Bạn chưa Accept invite org, hoặc chưa setup auth cho git.
 
 ```bash
 # Nhanh nhất: dùng HTTPS với Personal Access Token
@@ -252,7 +261,7 @@ ssh -T git@github.com  # test
 
 ### `git push` báo `non-fast-forward`
 
-→ Có người push lên main trước bạn:
+→ Có người merge lên main trước bạn:
 
 ```bash
 git pull --rebase origin main
@@ -270,8 +279,12 @@ git pull
 ### Commit nhầm author
 
 ```bash
-git commit --amend --author="liemsoy <liem@example.com>"
+git commit --amend --author="Liem Bui <liem@asw.global>"
 ```
+
+### Vim mở ra và không thoát được (sau lệnh `git commit`)
+
+Gõ `:wq` rồi Enter (ghi & thoát). Muốn dùng editor khác: `git config --global core.editor "code --wait"`.
 
 ---
 
@@ -281,8 +294,9 @@ git commit --amend --author="liemsoy <liem@example.com>"
 - [Conventional Commits](https://www.conventionalcommits.org/)
 - [Pro Git book (free)](https://git-scm.com/book/en/v2)
 - [Oh My Git! — game học git interactive](https://ohmygit.org/)
+- [Learn Git Branching — visualizer cực tốt](https://learngitbranching.js.org/)
 
 ---
 
-**Mentor:** Tommy (`thien-soy`)
-**Last updated:** Workshop Day 1
+**Maintainer:** Tommy (`thien-soy`) — review PR trong giờ làm việc, hỏi gấp thì Slack
+**Last updated:** phiên bản self-study

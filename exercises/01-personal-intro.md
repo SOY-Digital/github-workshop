@@ -31,8 +31,8 @@ git commit -m "feat: add intro page for <github-user>"
 git push -u origin feat/<github-user>-intro
 
 # 6. Mở PR trên GitHub UI
-# 7. Add 1 reviewer khác trong team
-# 8. Chờ approve → merge
+# 7. Add 1 reviewer là bạn khác trong team (review chéo — không cần chờ Tommy)
+# 8. Có approval → tự bấm "Squash and merge"
 ```
 
 ## Done khi

@@ -1,6 +1,6 @@
-# 🛠️ Setup Checklist (dành cho mentor — Tommy)
+# 🛠️ Maintainer Setup & Operations (dành cho Tommy)
 
-> File này dành cho anh Tommy. Hoàn thành từng bước trước khi bắt đầu workshop.
+> Repo này là **lộ trình self-study** — team tự làm ở nhà theo `WORKSHOP.md`, review chéo nhau. Anh chỉ setup **một lần** trước khi giao, sau đó vận hành async (review PR, trả lời issue).
 
 **Trạng thái hiện tại:**
 
@@ -10,7 +10,9 @@
 
 ---
 
-## Bước 1 — Thêm 4 thành viên vào repo (3 phút)
+## Phần A — Setup một lần (trước khi giao repo cho team, ~20 phút)
+
+### Bước 1 — Thêm 4 thành viên vào repo (3 phút)
 
 Repo thuộc org nên có 2 cách:
 
@@ -21,33 +23,27 @@ Repo → **Settings → Collaborators and teams → Add people** → add 4 ngư�
 - `QuangSoyAgency`
 - `anhsoyagency`
 
-Role: **Write** (đủ quyền push branch + mở PR).
+Role: **Write** (đủ quyền push branch + mở PR + approve PR khác).
 
 **Cách B — qua org Team (nếu muốn quản tập trung sau này):**
 Org SOY-Digital → **Teams → New team** (VD `workshop`) → add 4 bạn → vào repo Settings → Collaborators and teams → add team `workshop` với role **Write**.
 
-> ⚠️ Các bạn phải **check email (kể cả spam)** và Accept invite trước buổi học — tránh tốn 15 phút debug permission denied giữa buổi.
+> ⚠️ Nhắc các bạn **check email (kể cả spam)** và Accept invite — bài đầu tiên của lộ trình sẽ fail ngay tại `git clone`/`git push` nếu chưa accept.
 
----
+### Bước 2 — Cấu hình merge & branch protection (5 phút)
 
-## Bước 2 — Cấu hình merge & branch protection (5 phút)
-
-### 2a. Merge settings
-
-Repo → **Settings → General → Pull Requests** section:
+**2a. Merge settings** — Repo → **Settings → General → Pull Requests**:
 
 | Setting | Value |
 |---|---|
 | Allow merge commits | ❌ OFF |
-| Allow squash merging | ✅ ON (chọn "Commit title + commit message" để tự gom từ commit messages) |
+| Allow squash merging | ✅ ON ("Commit title + commit message") |
 | Allow rebase merging | ❌ OFF |
 | **Automatically delete head branches** | ✅ ON |
 
-→ WORKSHOP.md Phần 5.3 hướng dẫn học viên bấm **"Squash and merge"** — settings này đảm bảo nút đó là lựa chọn duy nhất, và branch tự xoá sau merge.
+→ Học viên được hướng dẫn bấm **"Squash and merge"** — settings này đảm bảo đó là nút duy nhất, và branch tự xoá sau merge.
 
-### 2b. Branch protection cho `main`
-
-**Settings → Branches → Add branch protection rule**:
+**2b. Branch protection cho `main`** — **Settings → Branches → Add branch protection rule**:
 
 | Setting | Value |
 |---|---|
@@ -59,9 +55,7 @@ Repo → **Settings → General → Pull Requests** section:
 | Include administrators | ❌ OFF (anh vẫn fix trực tiếp được khi cần gấp) |
 | Allow force pushes / deletions | ❌ OFF |
 
----
-
-## Bước 3 — Tạo 4 issue mẫu (5 phút)
+### Bước 3 — Tạo 4 issue mở đầu (5 phút)
 
 **Issues → New issue → Feature Request** template:
 
@@ -72,48 +66,49 @@ Repo → **Settings → General → Pull Requests** section:
 | `[FEAT] Add intro page for QuangSoyAgency` | `QuangSoyAgency` |
 | `[FEAT] Add intro page for anhsoyagency` | `anhsoyagency` |
 
-Apply label `good first issue` cho cả 4.
+Label `good first issue` cho cả 4.
 
----
+### Bước 4 — Verify trước khi giao (5 phút)
 
-## Bước 4 — Verify trước buổi học (5 phút)
-
-- [ ] 4 thành viên đã Accept invite (check danh sách trong Settings → Collaborators)
+- [ ] 4 thành viên đã Accept invite
 - [ ] Merge settings + auto-delete đã bật (Bước 2a)
 - [ ] `main` đã protected (Bước 2b)
-- [ ] 4 issue đã tạo, assignee đúng, label `good first issue`
-- [ ] Tạo 1 PR test từ branch bất kỳ → verify: PR template load đúng, chỉ thấy nút "Squash and merge" → close PR test, xoá branch test
-- [ ] Test clone: `git clone https://github.com/SOY-Digital/github-workshop.git` chạy được trên máy khác
+- [ ] 4 issue đã tạo, assignee đúng
+- [ ] Tạo 1 PR test → verify template load đúng + chỉ thấy nút "Squash and merge" → close + xoá branch test
+- [ ] Test clone từ máy khác được
+
+### Bước 5 — Giao repo cho team
+
+Gửi message đại loại:
+
+> Các bạn làm lộ trình tự học GitHub trong repo `SOY-Digital/github-workshop` — mở `WORKSHOP.md`, làm từ Phần 0, mỗi phần có self-check. Tự làm theo tốc độ riêng,review chéo nhau, gặp issue label `question`. Anh review PR khi rảnh, không cần chờ anh mới làm tiếp.
 
 ---
 
-## Bước 5 — Trong buổi workshop
+## Phần B — Vận hành async (định kỳ, ~15-30 phút/tuần)
 
-Mở `WORKSHOP.md` và follow 7 phần theo thời lượng.
-
-**Mentor notes theo từng phần:**
-
-| Phần | Lưu ý cho anh |
-|---|---|
-| Phần 3 (branch & commit) | Dành 2 phút check `git config user.email` của từng bạn — email sai là commit mất avatar, lỗi kinh điển của người mới |
-| Phần 5 (review & merge) | Ghép chéo review: A review B, B review C... tránh người mở PR tự merge (branch protection sẽ chặn) |
-| Phần 6 (conflict drill) | **Quan trọng:** merge PR người A trước, sau đó cả team nhìn màn hình người B thấy conflict xuất hiện — file drill `exercises/conflict-target.md` thiết kế cả 2 cùng sửa dòng 3 nên chắc chắn conflict |
-| Phần 7 (issues) | Nhắc học viên dùng `Closes #X` trong PR bài tập 2 |
+| Việc | Tần suất | Cách |
+|---|---|---|
+| Review PR còn treo | 1-2 lần/tuần | Tab Pull requests → filter "Awaiting your review". Học viên được quyền tự merge khi có approval chéo — anh chỉ cần approve hoặc comment, không cần bấm merge hộ |
+| Trả lời issue `question` | Trong ngày làm việc | Tab Issues → sort by newest. Khuyến khiché học viên trả lời nhau trước khi anh vào |
+| Check tiến độ team | Tuần 1 lần | Insights → Contributors + đếm PR merged của từng bạn; bạn nào 0 hoạt động > 1 tuần → nhắn riêng |
+| Xoá branch drill dư | Tháng 1 lần | Tab Branches → xoá branch `docs/my-rule` cũ (học viên có thể quên xoá local push) |
+| Ghi nhận hoàn thành | Khi có issue `[FEAT] Hoàn thành lộ trình` | React 👍 + comment chúc mừng; tập hợp để tính cho buổi review nâng cao |
 
 ---
 
-## 📞 Troubleshooting nhanh cho mentor
+## 📞 Troubleshooting nhanh
 
 | Vấn đề | Giải pháp |
 |---|---|
 | Học viên không thấy repo | Chưa accept invite → check email (kể cả spam) |
-| `git push` báo auth fail | Hướng dẫn dùng Personal Access Token (WORKSHOP.md → Xử lý lỗi thường gặp) |
-| Commit không có avatar | `user.email` không khớp email GitHub → xem WORKSHOP.md phần chuẩn bị |
-| `main` bị lock, anh push không được | Đó là branch protection — nếu thật cần gấp: PR như thường, hoặc tắt rule "Include administrators" đã để OFF thì admin vẫn push được trực tiếp |
-| Conflict drill không nổ conflict | Kiểm tra cả 2 có thực sự sửa cùng dòng 3 trong `exercises/conflict-target.md` (không phải dòng khác) |
+| `git push` báo auth fail | Học viên chưa setup PAT/SSH → trỏ họ tới WORKSHOP.md → "Xử lý lỗi thường gặp" |
+| Commit không có avatar | `user.email` không khớp email GitHub → WORKSHOP.md Phần 0 đã giải thích |
+| `main` bị lock với anh | "Include administrators" đang OFF nên anh vẫn push trực tiếp được; nếu tắt nhầm → Settings → Branches sửa lại |
+| Conflict drill không nổ conflict | Học viên sửa 2 dòng khác nhau thay vì cùng dòng 3 — exercises/03 yêu cầu rõ "cùng sửa dòng 3" |
 | Học viên commit sai author | `git commit --amend --author="Tên <email-đúng>"` rồi `git push --force-with-lease` |
+| Học viên merge nhầm thứ gì đó vào main | revert qua PR: `git revert <sha>` — cũng là dịp dạy thêm 1 khái niệm |
 
 ---
 
-**Estimated total setup time:** ~20 phút
-**Workshop duration:** ~2.5 giờ
+**Setup một lần:** ~20 phút · **Vận hành:** ~15-30 phút/tuần

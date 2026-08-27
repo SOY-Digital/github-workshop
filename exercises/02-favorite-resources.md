@@ -6,7 +6,7 @@
 
 Team muốn xây dựng một **shared list** các tài nguyên hay (blog, tool, course, book) mà mỗi người recommend. Mỗi người phụ trách 1 category.
 
-## Categories (assign ngay đầu buổi)
+## Categories (nhận phần ngay khi bắt đầu bài — ai nhanh chọn trước)
 
 | Category       | Owner             | File                              |
 |----------------|-------------------|-----------------------------------|
@@ -37,6 +37,7 @@ touch resources/<category>.md
 
 # 4. Commit + push + mở PR
 # 5. Trong PR description: "Closes #7"
+# 6. Add reviewer là bạn khác trong team → có approval → tự merge
 ```
 
 ## Review yêu cầu
