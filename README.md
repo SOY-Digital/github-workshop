@@ -10,7 +10,7 @@
 
 | Thành viên        | GitHub user        | Role trong repo                  |
 |-------------------|--------------------|----------------------------------|
-| Tommy (mentor)    | `t-nguyen2107`     | Repo owner, review & merge       |
+| Tommy (mentor)    | `thien-soy`        | Repo owner, review & merge       |
 | Liêm Sờ            | `liemsoy`          | Contributor                      |
 | Ngọc Sờ             | `ngocsoyasw`       | Contributor                      |
 | Quang (Agency)    | `QuangSoyAgency`   | Contributor                      |
@@ -35,7 +35,7 @@ Sau 2-3 giờ, mỗi người sẽ:
 
 ```bash
 # 1. Clone repo (sau khi Tommy push lên GitHub)
-git clone https://github.com/t-nguyen2107/github-workshop.git
+git clone https://github.com/thien-soy/github-workshop.git
 cd github-workshop
 
 # 2. Tạo branch riêng của bạn

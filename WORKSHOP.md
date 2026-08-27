@@ -51,7 +51,7 @@ Mentor chia sẻ màn hình, walk-through:
 
 ```bash
 # Clone về máy
-git clone https://github.com/t-nguyen2107/github-workshop.git
+git clone https://github.com/thien-soy/github-workshop.git
 cd github-workshop
 
 # Xem trạng thái
@@ -280,5 +280,5 @@ git commit --amend --author="liemsoy <liem@example.com>"
 
 ---
 
-**Mentor:** Tommy (`t-nguyen2107`)
+**Mentor:** Tommy (`thien-soy`)
 **Last updated:** Workshop Day 1
