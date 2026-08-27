@@ -6,7 +6,10 @@
 
 - ✅ Repo đã live: **https://github.com/SOY-Digital/github-workshop** (org SOY-Digital)
 - ✅ Local repo: `/Users/tommynguyen/Developer/work/SOY-SM-WORK/github-workshop` (remote đã trỏ org)
-- ⬜ Các bước 1→4 bên dưới
+- ✅ **Bước 2 done** (2026-08-27): squash-only + auto-merge + auto-delete branch đã bật qua API; branch protection `main` đã bật (1 approval, dismiss stale, conversation resolution, admin bypass)
+- 🔶 **Bước 1 đang dở**: `anhsoyagency`, `ngocsoyasw` đã accept · `liemsoy`, `QuangSoyAgency` đã mời nhưng **chưa accept** (nhắc họ check email/spam)
+- ⬜ Bước 3 (4 issue mở đầu) — chưa làm
+- ⬜ Bước 4 (verify) — chưa làm
 
 ---
 
