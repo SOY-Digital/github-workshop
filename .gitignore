@@ -1,0 +1,17 @@
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Editor
+.vscode/
+.idea/
+*.iml
+
+# Logs
+*.log
+
+# Env
+.env
+.env.local
